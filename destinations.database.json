@@ -1,0 +1,691 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-04-21T20:09:36.539Z",
+  "sourceFile": "Prueba Itinerario 18 dias - destinos con imagenes.html",
+  "languages": [
+    "es",
+    "en"
+  ],
+  "defaultLanguage": "es",
+  "cities": [
+    "Edimburgo",
+    "Giverny",
+    "Londres",
+    "Oxford",
+    "Paris"
+  ],
+  "records": [
+    {
+      "city": "Edimburgo",
+      "place": {
+        "es": "Royal Mile",
+        "en": "Royal Mile"
+      },
+      "image": "https://ewh.org.uk/wp-content/uploads/2023/11/Royal-Mile.png",
+      "description": {
+        "es": "Corredor historico central de Edimburgo con fuerte valor patrimonial y cultural.",
+        "en": "Historic central corridor of Edinburgh with strong heritage and cultural value."
+      }
+    },
+    {
+      "city": "Edimburgo",
+      "place": {
+        "es": "Monumento a Scott",
+        "en": "Scott Monument"
+      },
+      "image": "https://edinburghtips.com/images/sightseeing-edinburgh.jpg",
+      "description": {
+        "es": "Punto de referencia urbana vinculado a la literatura y la identidad escocesa.",
+        "en": "Urban reference point linked to literature and Scottish identity."
+      }
+    },
+    {
+      "city": "Edimburgo",
+      "place": {
+        "es": "Museo Nacional de Escocia",
+        "en": "National Museum of Scotland"
+      },
+      "image": "https://edinburghtourist.co.uk/wp-content/uploads/2017/11/national-museum-scotland.jpg",
+      "description": {
+        "es": "Visita educativa para vincular ciencia, historia y patrimonio nacional.",
+        "en": "Educational visit to connect science, history and national heritage."
+      }
+    },
+    {
+      "city": "Edimburgo",
+      "place": {
+        "es": "Castillo de Edimburgo",
+        "en": "Edinburgh Castle"
+      },
+      "image": "https://edinburghtourist.co.uk/wp-content/uploads/2017/12/edinburgh-castle.jpg",
+      "description": {
+        "es": "Parada patrimonial para comprender la historia escocesa en su contexto urbano.",
+        "en": "Heritage stop to understand Scottish history in its urban context."
+      }
+    },
+    {
+      "city": "Edimburgo",
+      "place": {
+        "es": "Calton Hill",
+        "en": "Calton Hill"
+      },
+      "image": "https://media.guruwalk.com/y3knhnqe9o1wi93h0rd4495hroyi",
+      "description": {
+        "es": "Mirador panoramico para leer la ciudad y reconocer sus principales hitos.",
+        "en": "Panoramic viewpoint to read the city and recognize its main landmarks."
+      }
+    },
+    {
+      "city": "Edimburgo",
+      "place": {
+        "es": "Dean Village",
+        "en": "Dean Village"
+      },
+      "image": "https://d1km7u9ubck4j.cloudfront.net/production-upgrade-2024/bb36e395b063bec9205952807471e86a/conversions/6628d59d01ea3-HD.jpg",
+      "description": {
+        "es": "Recorrido por un sector pintoresco para contrastar escalas y ritmos de la ciudad.",
+        "en": "Tour through a picturesque sector to contrast urban scales and rhythms."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Aeropuerto",
+        "en": "Airport"
+      },
+      "image": "https://cdn.britannica.com/55/257755-050-79C6125F/Terminal-5-interior-Heathrow-Airport-England.jpg",
+      "description": {
+        "es": "Punto de llegada y organizacion inicial del grupo para comenzar el itinerario con seguridad.",
+        "en": "Arrival point and initial group organization to begin the itinerary safely."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Residencia",
+        "en": "Residence"
+      },
+      "image": "https://www.lsbu.ac.uk/_resources/images-new/accommodation-redesign/accommodation-redesign-gallery/Screenshot-2026-02-25-123229.png",
+      "description": {
+        "es": "Espacio de alojamiento, adaptacion y coordinacion general de actividades del dia.",
+        "en": "Accommodation space, adaptation and general coordination of daily activities."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Barrio Local",
+        "en": "Local Neighbourhood"
+      },
+      "image": "",
+      "description": {
+        "es": "Primer contacto con la vida cotidiana de la ciudad y sus dinamicas urbanas.",
+        "en": "First contact with the city's everyday life and urban dynamics."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Catedral de San Pablo",
+        "en": "St Paul's Cathedral"
+      },
+      "image": "https://www.thecityofldn.com/wp-content/uploads/2023/05/Wren_s-great-church-fron-the-south-east-St-Paul_s-Cathedral.jpg",
+      "description": {
+        "es": "Visita cultural para conocer arquitectura, historia y simbolos de Londres.",
+        "en": "Cultural visit to learn about architecture, history and symbols of London."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Millenium Bridge",
+        "en": "Millennium Bridge"
+      },
+      "image": "https://images.locationscout.net/2016/10/millennium-bridge-and-tate-modern-united-kingdom.webp?h=1400&q=80",
+      "description": {
+        "es": "Cruce peatonal ideal para observar el skyline londinense y conectar distintos hitos del centro.",
+        "en": "Ideal pedestrian crossing to observe the London skyline and connect different city landmarks."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Millennium Bridge",
+        "en": "Millennium Bridge"
+      },
+      "image": "https://images.locationscout.net/2016/10/millennium-bridge-and-tate-modern-united-kingdom.webp?h=1400&q=80",
+      "description": {
+        "es": "Cruce peatonal ideal para observar el skyline londinense y conectar distintos hitos del centro.",
+        "en": "Ideal pedestrian crossing to observe the London skyline and connect different city landmarks."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Borough Market",
+        "en": "Borough Market"
+      },
+      "image": "https://pomelolondon.co.uk/wp-content/uploads/2024/12/borough-market.jpg",
+      "description": {
+        "es": "Experiencia gastronomica y de observacion de habitos locales en un mercado historico.",
+        "en": "Gastronomic experience and observation of local habits in a historic market."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Piccadilly Circus",
+        "en": "Piccadilly Circus"
+      },
+      "image": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/92/03/33/piccadilly-circus.jpg?w=900&h=500&s=1",
+      "description": {
+        "es": "Recorrido por una zona iconica para orientacion urbana y referencias de la ciudad.",
+        "en": "Tour through an iconic area for urban orientation and city references."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Big Ben",
+        "en": "Big Ben"
+      },
+      "image": "https://cdn.pixabay.com/photo/2015/08/23/16/20/westminster-902972_1280.jpg",
+      "description": {
+        "es": "Parada fotografica y contextualizacion historica de uno de los iconos britanicos.",
+        "en": "Photographic stop and historical context of one of the British icons."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Abadia de Westminster",
+        "en": "Westminster Abbey"
+      },
+      "image": "https://cdn.sanity.io/images/nxpteyfv/goguides/2ab2e2caabcb33dc67483fa07bdef4e5835a1320-1600x1066.jpg",
+      "description": {
+        "es": "Visita clave para relacionar patrimonio religioso, ceremonial y politico britanico.",
+        "en": "Key visit to connect religious, ceremonial and political British heritage."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Museo de Guerra Imperial",
+        "en": "Imperial War Museum"
+      },
+      "image": "https://www.camden-market.org/wp-content/uploads/2020/06/Imperialwar.jpg",
+      "description": {
+        "es": "Espacio para reflexionar sobre conflictos del siglo XX y memoria historica.",
+        "en": "Space to reflect on 20th-century conflicts and historical memory."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Notting Hill",
+        "en": "Notting Hill"
+      },
+      "image": "https://www.queensparkhotel.com/wp-content/uploads/2025/01/London-Nottinghill.jpg",
+      "description": {
+        "es": "Exploracion de barrio con identidad propia, cultura local y vida de calle.",
+        "en": "Exploration of a neighbourhood with its own identity, local culture and street life."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Portobello Market",
+        "en": "Portobello Market"
+      },
+      "image": "https://content.speakup.es/medio/2023/10/16/438-portobelo-road-b-shutter_d5757380_231016154856_1280x720.jpg",
+      "description": {
+        "es": "Recorrido por uno de los mercados mas conocidos de Londres, con foco en comercio y cultura barrial.",
+        "en": "Tour through one of London's most famous markets, focusing on commerce and local culture."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Leicester Square",
+        "en": "Leicester Square"
+      },
+      "image": "https://www.thegrandattrafalgarsquare.com/wp-content/uploads/sites/8/2018/01/leicester-square-1024x603.jpg?ch=Width,DPR",
+      "description": {
+        "es": "Zona de gran movimiento urbano y entretenimiento, util para observar la vida metropolitana.",
+        "en": "Area of great urban movement and entertainment, useful for observing metropolitan life."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Chinatown",
+        "en": "Chinatown"
+      },
+      "image": "https://i.redd.it/1xe2q3tr3aa81.jpg",
+      "description": {
+        "es": "Sector para explorar diversidad cultural, gastronomica y dinamicas urbanas en el centro de Londres.",
+        "en": "Sector to explore cultural diversity, gastronomy and urban dynamics in central London."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Canary Wharf",
+        "en": "Canary Wharf"
+      },
+      "image": "https://i.ytimg.com/vi/5nneRLKxkWk/maxresdefault.jpg",
+      "description": {
+        "es": "Observacion de la Londres financiera y su arquitectura contemporanea.",
+        "en": "Observation of financial London and its contemporary architecture."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Greenwich",
+        "en": "Greenwich"
+      },
+      "image": "https://www.londonxlondon.com/wp-content/uploads/2020/05/Greenwich.jpeg",
+      "description": {
+        "es": "Recorrido por patrimonio maritimo y espacios historicos vinculados a la navegacion.",
+        "en": "Tour through maritime heritage and historic spaces linked to navigation."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Museo Britanico",
+        "en": "British Museum"
+      },
+      "image": "https://framerusercontent.com/images/EAITCMaNoSgPFD2t1uENWXHYQk.jpg?width=1600&height=1000",
+      "description": {
+        "es": "Actividad academica con enfoque en patrimonio, historia y pensamiento critico.",
+        "en": "Academic activity focusing on heritage, history and critical thinking."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Oxford Street",
+        "en": "Oxford Street"
+      },
+      "image": "https://images.trvl-media.com/place/6144897/661ff028-e20a-43e4-b8d7-e675e12f8948.jpg",
+      "description": {
+        "es": "Avenida comercial emblematica para analizar consumo, marcas globales y flujo urbano.",
+        "en": "Emblematic shopping avenue to analyze consumption, global brands and urban flow."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "The Now Building",
+        "en": "The Now Building"
+      },
+      "image": "https://www.outernet.com/assets/images/b2b/spaces/gallery-image-01.jpg",
+      "description": {
+        "es": "Parada contemporanea para observar pantallas inmersivas, tecnologia y cultura visual.",
+        "en": "Contemporary stop to observe immersive screens, technology and visual culture."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Cruce de Abbey Road",
+        "en": "Abbey Road Crossing"
+      },
+      "image": "https://media.timeout.com/images/105632690/image.jpg",
+      "description": {
+        "es": "Icono de la cultura pop vinculado a la musica y al imaginario contemporaneo britanico.",
+        "en": "Icon of pop culture linked to music and contemporary British imagination."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Stratford Shopping Centre",
+        "en": "Stratford Shopping Centre"
+      },
+      "image": "https://phoenixstoragelive.blob.core.windows.net/venueimages/6421edb5-b397-a547-a7e2-7dcc037c8b38",
+      "description": {
+        "es": "Espacio comercial y de encuentro juvenil para observar dinamicas cotidianas.",
+        "en": "Commercial and youth meeting space to observe daily dynamics."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Palacio de Buckingham",
+        "en": "Buckingham Palace"
+      },
+      "image": "https://cdn.britannica.com/94/148994-159-25B17024/Buckingham-Palace-Queen-Victoria-Memorial-London-statue.jpg",
+      "description": {
+        "es": "Acercamiento al sistema monarquico y su rol simbolico en Reino Unido.",
+        "en": "Approach to the monarchic system and its symbolic role in the United Kingdom."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Green Park",
+        "en": "Green Park"
+      },
+      "image": "https://images.pexels.com/photos/21070561/pexels-photo-21070561.jpeg?cs=srgb&dl=pexels-rosa-stone-1013669897-21070561.jpg&fm=jpg",
+      "description": {
+        "es": "Pausa en espacio verde para reconocer la relacion entre naturaleza y vida urbana en Londres.",
+        "en": "Pause in a green space to recognize the relationship between nature and urban life in London."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Soho",
+        "en": "Soho"
+      },
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgcGqCCSUV18JDH_v1dSY_yh5OhWpT21Uv3g&s",
+      "description": {
+        "es": "Barrio vibrante para explorar diversidad cultural, gastronomia y actividad nocturna diurna.",
+        "en": "Vibrant neighbourhood to explore cultural diversity, gastronomy and daytime nightlife."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Museo de Ciencias Naturales",
+        "en": "Natural History Museum"
+      },
+      "image": "https://cdn-imgix.headout.com/media/images/cae7b654-c5d7-4207-b10c-f1f4dd73106a-1751454145340-288905.jpg?auto=compress%2Cformat&w=900&h=562.5&q=90&ar=16%3A10&crop=faces%2Ccenter&fit=crop",
+      "description": {
+        "es": "Recorrido de contenido academico centrado en biodiversidad, evolucion y divulgacion cientifica.",
+        "en": "Tour with academic content focused on biodiversity, evolution and scientific outreach."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Estadio del Chelsea",
+        "en": "Chelsea Stadium"
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/9/90/Stamford_Bridge_Clear_Skies.JPG",
+      "description": {
+        "es": "Acercamiento al deporte como fenomeno cultural y social de alcance global.",
+        "en": "Approach to sport as a cultural and social phenomenon of global reach."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Marble Arch",
+        "en": "Marble Arch"
+      },
+      "image": "https://cdn.sanity.io/images/nxpteyfv/goguides/1c49352f9048b89e89aecc21ed3858705c4c8203-1600x1066.jpg",
+      "description": {
+        "es": "Punto historico y urbano que funciona como referencia dentro del centro londinense.",
+        "en": "Historic and urban point that functions as a reference within central London."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Candem Town",
+        "en": "Camden Town"
+      },
+      "image": "https://cityrelay.com/static/d2b71e3195e122f0a6161c871d50c4cf/1b035/bigcamden.jpg",
+      "description": {
+        "es": "Zona alternativa y creativa para observar identidad juvenil, mercados y estilos urbanos.",
+        "en": "Alternative and creative area to observe youth identity, markets and urban styles."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Regents Park",
+        "en": "Regent's Park"
+      },
+      "image": "https://www.royalparks.org.uk/sites/default/files/2023-07/RS1065_TRP%20Queen%20Mary%27s%20Gardens%2019-scr%20%281%29.jpg",
+      "description": {
+        "es": "Espacio verde de escala mayor para descanso, observacion y lectura del paisaje urbano.",
+        "en": "Large-scale green space for rest, observation and reading the urban landscape."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Baker Street",
+        "en": "Baker Street"
+      },
+      "image": "https://www.optionstheedge.com/sites/default/files/field/featured-image/2017/39010253_xxl_edited.jpg",
+      "description": {
+        "es": "Parada vinculada al imaginario literario y a la historia urbana de Londres.",
+        "en": "Stop linked to literary imagination and London's urban history."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Tower Bridge",
+        "en": "Tower Bridge"
+      },
+      "image": "https://hblimg.mmtcdn.com/content/hubble/img/london/mmt/activities/m_london_tower_bridge_l_435_690.jpg",
+      "description": {
+        "es": "Icono de ingenieria y paisaje urbano sobre el rio, ideal para comprender la ciudad historica.",
+        "en": "Icon of engineering and urban landscape over the river, ideal for understanding historic London."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "London Eye",
+        "en": "London Eye"
+      },
+      "image": "https://discover.ticketmaster.co.uk/wp-content/uploads/2026/01/london-eye-featured-image-738x415.png",
+      "description": {
+        "es": "Punto panoramico para dimensionar la escala de Londres y sus principales barrios.",
+        "en": "Panoramic point to dimension the scale of London and its main neighbourhoods."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Trafalgar Square",
+        "en": "Trafalgar Square"
+      },
+      "image": "https://www.nationalgallery.org.uk/media/10ubfzua/plan-your-visit-crop-photoshop.jpg?rxy=0.6015037593984962,0.4844054580896686&width=1150&height=640&v=1dc9a7eafb2f510",
+      "description": {
+        "es": "Plaza central para analizar memoria publica, monumentos y vida ciudadana.",
+        "en": "Central square to analyze public memory, monuments and civic life."
+      }
+    },
+    {
+      "city": "Londres",
+      "place": {
+        "es": "Candem Town Market",
+        "en": "Camden Town Market"
+      },
+      "image": "",
+      "description": {
+        "es": "Zona alternativa y creativa para observar identidad juvenil, mercados y estilos urbanos.",
+        "en": "Alternative and creative area to observe youth identity, markets and urban styles."
+      }
+    },
+    {
+      "city": "Oxford",
+      "place": {
+        "es": "Camara Radcliffe",
+        "en": "Radcliffe Camera"
+      },
+      "image": "https://www.ouccc.org.uk/sites/default/files/styles/mt_image_large/public/ouccc/images/media/the-radcliffe-camera-oxford-england-guide.jpg?itok=M54mF4u3",
+      "description": {
+        "es": "Parada academica emblematico del paisaje universitario de Oxford.",
+        "en": "Emblematic academic stop in Oxford's university landscape."
+      }
+    },
+    {
+      "city": "Oxford",
+      "place": {
+        "es": "Universidad Christ Church",
+        "en": "Christ Church University"
+      },
+      "image": "https://theoxfordmagazine.com/wp-content/uploads/christ-church-oxford-university-01-1920x1080-1.webp",
+      "description": {
+        "es": "Visita para conocer tradiciones universitarias, arquitectura y vida estudiantil.",
+        "en": "Visit to learn about university traditions, architecture and student life."
+      }
+    },
+    {
+      "city": "Oxford",
+      "place": {
+        "es": "Puente de los Suspiros",
+        "en": "Bridge of Sighs"
+      },
+      "image": "https://d37rmf1ynyg9aw.cloudfront.net/fit-in/1280x1280/data/v4/resources/images/ef351ea2-e202-4e1e-ade1-72e8b7010865.jpeg",
+      "description": {
+        "es": "Icono fotografico de Oxford que ayuda a leer el entorno historico universitario.",
+        "en": "Photographic icon of Oxford that helps read the historic university environment."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Torre Eiffel",
+        "en": "Eiffel Tower"
+      },
+      "image": "https://cdn-imgix.headout.com/media/images/6eebf6f737874d1cb43cc655d41ed41e-23159-paris-2-hour-evening-bus-tour-of-paris-with-1-hour-eiffel-tower-guided-tour-06.jpg",
+      "description": {
+        "es": "Hito central de Paris para trabajar observacion cultural y geografica de la ciudad.",
+        "en": "Central landmark in Paris for cultural and geographical observation of the city."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Crucero por el Sena",
+        "en": "Seine River Cruise"
+      },
+      "image": "https://cdn.getyourguide.com/img/tour/16c89d1e8d49aba44def2f49791c172c5c05b2518f3a0aba62502a63bde8a173.png/140.jpg",
+      "description": {
+        "es": "Recorrido para apreciar Paris desde el rio y ubicar monumentos en su contexto.",
+        "en": "Tour to appreciate Paris from the river and locate monuments in context."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Arco del Triumfo",
+        "en": "Arc de Triomphe"
+      },
+      "image": "https://www.quevisitar.paris/wp-content/uploads/2022/07/el-Arco-de-Triunfo-paris-foto.jpeg",
+      "description": {
+        "es": "Monumento simbolico para abordar memoria, celebracion nacional y urbanismo parisino.",
+        "en": "Symbolic monument to address memory, national celebration and Parisian urbanism."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Arco del Triunfo",
+        "en": "Arc de Triomphe"
+      },
+      "image": "https://www.quevisitar.paris/wp-content/uploads/2022/07/el-Arco-de-Triunfo-paris-foto.jpeg",
+      "description": {
+        "es": "Monumento simbolico para abordar memoria, celebracion nacional y urbanismo parisino.",
+        "en": "Symbolic monument to address memory, national celebration and Parisian urbanism."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Opera Garnier",
+        "en": "Palais Garnier"
+      },
+      "image": "https://upload.wikimedia.org/wikipedia/commons/6/6d/Paris_Palais_Garnier_2010-04-06_16.55.07.jpg",
+      "description": {
+        "es": "Parada cultural para valorar arquitectura monumental y tradiciones artisticas francesas.",
+        "en": "Cultural stop to value monumental architecture and French artistic traditions."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Basilica de Sacre Coeur",
+        "en": "Sacré-Cœur Basilica"
+      },
+      "image": "https://www.parisperfect.com/cdn-cgi/image/format=auto,width=1256/https://www.parisperfect.com/g/photos/upload/sml_762877544-1484631931-Sacre-HERO.jpg",
+      "description": {
+        "es": "Visita a un punto elevado de Paris con valor religioso, historico y panoramico.",
+        "en": "Visit to an elevated point in Paris with religious, historic and panoramic value."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Notre Dame",
+        "en": "Notre-Dame"
+      },
+      "image": "https://www.franciaturismo.net/es/wp-content/uploads/sites/17/paris-notre-dame-hd.jpg",
+      "description": {
+        "es": "Recorrido por un icono arquitectonico y simbolico fundamental para la historia de Paris.",
+        "en": "Tour through an architectural and symbolic icon fundamental to Paris' history."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Museo del Louvre",
+        "en": "Louvre Museum"
+      },
+      "image": "https://images.ctfassets.net/43cg184ejz07/4eX2DHTj77EgHbh5GVyX61/aa5f22c8c7c3dfd9fb866441036ae40e/palais-et-pyramide.jpg?fm=jpg&w=1024&h=683&fit=fill",
+      "description": {
+        "es": "Espacio clave para conectar arte, historia europea y aprendizaje vivencial.",
+        "en": "Key space to connect art, European history and experiential learning."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Barrio Latino",
+        "en": "Latin Quarter"
+      },
+      "image": "https://cdn.prod.website-files.com/6107ac893efb8524ac54eac1/6194cd49f1ea62d88de116d8_Jardin%20de%20cluny%20_Quartier%20Latin_%20city%20guide2%20(1).png",
+      "description": {
+        "es": "Recorrido por una zona universitaria y cultural de fuerte tradicion intelectual.",
+        "en": "Tour through a university and cultural area with strong intellectual tradition."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Jardines de Luxemburgo",
+        "en": "Luxembourg Gardens"
+      },
+      "image": "https://loving-travel.com/wp-content/uploads/2022/10/221014155623001-1-e1677077225705.jpg",
+      "description": {
+        "es": "Espacio abierto para descanso, observacion del entorno y vida cotidiana parisina.",
+        "en": "Open space for rest, observation of the surroundings and Parisian daily life."
+      }
+    },
+    {
+      "city": "Paris",
+      "place": {
+        "es": "Disney",
+        "en": "Disneyland Paris"
+      },
+      "image": "https://img2.10bestmedia.com/Images/Photos/415779/Disneyland-Paris-Sleeping-Beauty-Castle_54_990x660.jpg?auto=webp&width=3840&quality=75",
+      "description": {
+        "es": "Actividad de cierre grupal con enfoque en convivencia, disfrute y celebracion del viaje.",
+        "en": "Closing group activity focused on coexistence, enjoyment and celebration of the trip."
+      }
+    },
+    {
+      "city": "Giverny",
+      "place": {
+        "es": "Fundación Monet",
+        "en": "Monet Foundation"
+      },
+      "image": "https://content-viajes.nationalgeographic.com.es/medio/2024/04/04/casa-claude-monet_ad4bf224_240404151942_1200x800.jpg",
+      "description": {
+        "es": "La fundacion gestiona la casa y los jardines donde el famoso pintor impresionista vivió y creó desde 1883 hasta su muerte en 1926. Es un museo destacado que permite visitar su casa con fachada rosa, el taller y sus icónicos jardines —el Clos Normand y el Jardín de Agua—, principales fuentes de inspiración de sus famosas series de nenúfares.",
+        "en": "The foundation manages the house and gardens where the famous Impressionist painter lived and created from 1883 until his death in 1926. It is an outstanding museum that allows you to visit its pink-fronted house, the workshop and its iconic gardens - the Clos Normand and the Water Garden - which are the main sources of inspiration for its famous series of water lilies."
+      }
+    }
+  ]
+}

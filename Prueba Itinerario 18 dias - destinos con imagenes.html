@@ -1,0 +1,3488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Capri Summer Camp</title>
+  <!-- https://drive.google.com/thumbnail?id=1ajUKPoZMcoxuaWkquA3HI958v2Zheq_J&sz=w1000 , icono default de CSC -->
+  <link rel="icon" href="https://drive.google.com/thumbnail?id=1Wr49HXQaRwBb8QkNLn5bw5c2eN5SNtSl&sz=w32">
+  <style>
+    :root {
+      --bg: #f6f2ea;
+      --paper: #fffdfa;
+      --ink: #1f2c31;
+      --muted: #607078;
+      --line: #ddd5c8;
+      --accent: #0d6a63;
+      --accent-2: #203d54;
+      --soft: #e2f2ef;
+      --placeholder-a: #d8e9e6;
+      --placeholder-b: #f1e6d7;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top right, rgba(239, 224, 198, 0.82) 0, transparent 25%),
+        linear-gradient(180deg, #fbf8f3 0%, var(--bg) 100%);
+      line-height: 1.58;
+    }
+
+    .wrap {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 36px 20px 64px;
+    }
+
+    .hero {
+      min-height: 180px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 20px 44px rgba(22, 33, 40, 0.16);
+      background:
+        linear-gradient(180deg, rgba(12, 31, 44, 0.18), rgba(12, 31, 44, 0.66)),
+        linear-gradient(135deg, rgba(13, 106, 99, 0.88), rgba(32, 61, 84, 0.9));
+      position: relative;
+      display: flex;
+      align-items: end;
+    }
+
+    .hero-logo {
+      position: absolute;
+      top: 24px;
+      right: 10px;
+      width: 160px;
+      height: 160px;
+      border-radius: 22px;
+      border: 1px dashed rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.14);
+      backdrop-filter: blur(6px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 14px;
+      color: rgba(255,255,255,0.92);
+      font-size: 0.95rem;
+    }
+
+    .hero-content {
+      padding: 34px 220px 34px 34px;
+      color: #fff;
+      max-width: 900px;
+    }
+
+    .hero.hero-no-logo .hero-content {
+      padding: 34px;
+      max-width: none;
+      width: 100%;
+    }
+
+    .hero h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.2rem, 4vw, 4rem);
+      line-height: 1.03;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      margin: 0;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.92);
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 0.92rem;
+    }
+
+    .section {
+      margin-top: 28px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: 0 10px 24px rgba(30, 37, 41, 0.05);
+    }
+
+    h2 {
+      margin: 0 0 10px;
+      font-size: 1.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .highlights {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .highlight {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fff, #fcfaf6);
+    }
+
+    .highlight strong {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--accent);
+    }
+
+    .highlight-desc {
+      margin: 0;
+    }
+
+    .days {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .day-card {
+      overflow: hidden;
+      border-radius: 22px;
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 10px 24px rgba(30, 37, 41, 0.06);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .day-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(30, 37, 41, 0.12);
+    }
+
+    .day-card:focus-visible {
+      outline: 3px solid rgba(13, 106, 99, 0.35);
+      outline-offset: 3px;
+    }
+
+    .day-image {
+      height: 220px;
+      background:
+        linear-gradient(135deg, rgba(216, 233, 230, 0.92), rgba(241, 230, 215, 0.92));
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #45636b;
+      text-align: center;
+      padding: 20px;
+      font-size: 1rem;
+    }
+
+    .day-image[style*="background-image"] {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #ffffff;
+    }
+
+    .day-image::after {
+      border: 1px dashed rgba(69, 99, 107, 0.55);
+      border-radius: 999px;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .day-body {
+      padding: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--accent);
+      font-size: 0.83rem;
+      margin-bottom: 10px;
+    }
+
+    .day-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.35rem;
+      color: var(--accent-2);
+    }
+
+    .places {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .note {
+      margin: 0;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .detail-view {
+      display: none;
+    }
+
+    .detail-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .back-link {
+      text-decoration: none;
+      color: var(--accent-2);
+      font-weight: bold;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 14px;
+    }
+
+    .detail-tag {
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--accent);
+      padding: 6px 12px;
+      font-size: 0.9rem;
+    }
+
+    .detail-image {
+      height: 680px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #f0ece5;
+      margin-bottom: 14px;
+    }
+
+    .detail-view h3 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+      color: var(--accent-2);
+      line-height: 1.2;
+    }
+
+    .detail-view .places {
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .destination-title {
+      margin: 16px 0 10px;
+      font-size: 1.1rem;
+      color: var(--accent-2);
+    }
+
+    .destination-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .destination-card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fff, #fcfaf6);
+      padding: 10px;
+      min-height: 84px;
+    }
+
+    .destination-thumb {
+      width: 100%;
+      height: 320px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      margin-bottom: 8px;
+      background:
+        linear-gradient(135deg, rgba(216, 233, 230, 0.92), rgba(241, 230, 215, 0.92));
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-color: #f0ece5;
+    }
+
+    .destination-card strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+    }
+
+    .destination-card p {
+      margin: 0;
+    }
+
+    .destination-copy {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+
+    .language-selector {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      background: #f5f5f5;
+      color: #333;
+      cursor: pointer;
+      font-size: 0.85rem;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+
+    .lang-btn:hover {
+      background: #e8e8e8;
+    }
+
+    .lang-btn-active {
+      background: #2c3e50;
+      color: #fff;
+      border-color: #2c3e50;
+    }
+
+    .detail-nav {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .detail-nav-btn {
+      text-decoration: none;
+      color: var(--accent-2);
+      font-weight: bold;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 8px 14px;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+
+    .detail-nav-btn:hover {
+      background: #f4efe6;
+    }
+
+    .detail-nav-btn.is-disabled {
+      pointer-events: none;
+      opacity: 0.45;
+      cursor: default;
+    }
+
+    .detail-mode .wrap {
+      max-width: 1280px;
+    }
+
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.92em;
+    }
+
+    /* EDITOR STYLES */
+    .editor-panel {
+      position: fixed;
+      top: 0;
+      right: -500px;
+      width: 500px;
+      height: 100vh;
+      background: white;
+      box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+      overflow-y: auto;
+      transition: right 0.3s ease;
+      z-index: 9999;
+      border-left: 1px solid var(--line);
+    }
+
+    .editor-panel.open {
+      right: 0;
+    }
+
+    .editor-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .editor-header h2 {
+      margin: 0;
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
+
+    .editor-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .editor-close-btn:hover {
+      color: var(--ink);
+    }
+
+    .editor-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+    }
+
+    .editor-tab-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .editor-tab-btn.active {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    .editor-tab-btn:hover {
+      color: var(--ink);
+    }
+
+    .editor-tab-content {
+      display: none;
+      padding: 20px;
+    }
+
+    .editor-tab-content.active {
+      display: block;
+    }
+
+    .editor-btn {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+
+    .editor-btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .editor-btn-primary:hover {
+      background: #05564f;
+    }
+
+    .editor-btn-secondary {
+      background: var(--line);
+      color: var(--ink);
+    }
+
+    .editor-btn-secondary:hover {
+      background: #dcc8bb;
+    }
+
+    .editor-btn-danger {
+      background: #d9534f;
+      color: white;
+    }
+
+    .editor-btn-danger:hover {
+      background: #c9302c;
+    }
+
+    .days-list, .destinations-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .cities-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .editor-item {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--paper);
+    }
+
+    .editor-item-title {
+      font-weight: 500;
+      color: var(--ink);
+      flex: 1;
+    }
+
+    .editor-item-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .editor-item-btn {
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: white;
+      color: var(--ink);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .editor-item-btn:hover {
+      background: var(--soft);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* MODAL STYLES */
+    .modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 12px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 44px rgba(22, 33, 40, 0.3);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: var(--ink);
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--muted);
+      padding: 0;
+    }
+
+    .modal-close-btn:hover {
+      color: var(--ink);
+    }
+
+    #dayEditForm, #destinationEditForm {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    .form-group input, .form-group textarea {
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      color: var(--ink);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .form-group input:focus, .form-group textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(13, 106, 99, 0.1);
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      padding: 20px;
+      border-top: 1px solid var(--line);
+      background: var(--soft);
+    }
+
+    @media (max-width: 720px) {
+      .wrap { padding: 20px 14px 40px; }
+      .section { padding: 18px; border-radius: 18px; }
+      .hero { min-height: 390px; border-radius: 20px; }
+      .hero-content { padding: 20px 140px 20px 20px; }
+      .hero.hero-no-logo .hero-content { padding: 20px; }
+      .hero-logo {
+        width: 110px;
+        height: 110px;
+        top: 16px;
+        right: 16px;
+        font-size: 0.82rem;
+      }
+      .day-image { height: 190px; }
+      .detail-image { height: 440px; }
+      .destination-thumb { height: 230px; }
+      .destination-grid { grid-template-columns: 1fr; }
+      
+      .editor-panel {
+        width: 100%;
+        right: -100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div id="heroLogoWrap" class="hero-logo" style="background:transparent; border:none;"><img id="heroLogoImage" src="https://drive.google.com/thumbnail?id=1ajUKPoZMcoxuaWkquA3HI958v2Zheq_J&sz=w1000" alt="" onerror="this.style.display='none'" style="max-width:100%; max-height:100%; object-fit:contain; mix-blend-mode:screen; display:block;">
+        </div>
+      <div class="hero-content">
+        <h1 id="heroMainTitle">Londres y París 2026</h1>
+        <p id="heroMainIntro">
+          Programa educativo y cultural para adolescentes. Una propuesta equilibrada entre aprendizaje de inglés,
+          visitas académicas, experiencias culturales y actividades grupales.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 id="presentationTitle">Presentación general</h2>
+      <p id="presentationLead" class="lead">
+        Este viaje está pensado para estudiantes adolescentes que buscan mejorar el idioma,
+        ganar autonomía y conocer ciudades icónicas de Europa en un entorno seguro, acompañados por coordinadores.
+      </p>
+      <div class="highlights">
+        <div class="highlight">
+          <strong id="highlight1Title">Enfoque académico</strong>
+          <p id="highlight1Desc" class="highlight-desc">Clases de inglés en Londres, desafíos de comunicación y actividades guiadas para practicar el idioma en contexto real.</p>
+        </div>
+        <div class="highlight">
+          <strong id="highlight2Title">Aprendizaje vivencial</strong>
+          <p id="highlight2Desc" class="highlight-desc">Museos, universidades, barrios históricos y recorridos culturales para conectar contenidos escolares con experiencias concretas.</p>
+        </div>
+        <div class="highlight">
+          <strong id="highlight3Title">Experiencia internacional</strong>
+          <p id="highlight3Desc" class="highlight-desc">Convivencia grupal, uso de transporte público, responsabilidad personal y descubrimiento de nuevas culturas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h2 id="itineraryTitle">Itinerario detallado</h2>
+        <div id="mainLanguageSelector" class="language-selector">
+          <button id="mainBtnLangEs" class="lang-btn lang-btn-active" data-lang="es">Español</button>
+          <button id="mainBtnLangEn" class="lang-btn" data-lang="en">English</button>
+          <button id="exportLockedHtmlBtn" class="lang-btn" type="button">Exportar HTML fijo</button>
+          <button id="exportEditableHtmlBtn" class="lang-btn" type="button">Exportar HTML editable</button>
+          <button id="toggleEditorBtn" class="lang-btn" type="button" style="background-color: #d4a574;">✎ Editar</button>
+        </div>
+      </div>
+      <p id="itineraryLead" class="lead">
+        Recorrido de 18 días con base en Londres (11 días), Edimburgo (2 días, tour opcional con costo adicional), Oxford (1 día) y París (4 días).
+      </p>
+      <div class="days">
+        <article class="day-card"><div class="day-image" style="background-image: url('https://images.squarespace-cdn.com/content/v1/63ff85f2a6fc85330e1bca8b/1677847706765-DWPYHL109LLLSWU3ITV0/lsbu.jpg')"></div><div class="day-body"><div class="tag">Dia 1 · Londres</div><h3>Llegada y primer reconocimiento</h3><p class="places">Aeropuerto, Residencia</p><p class="note">Arribo al destino e inicio de la experiencia con recorrido de reconocimiento por el entorno cercano.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://offloadmedia.feverup.com/secretldn.com/wp-content/uploads/2023/07/25120947/Image-of-St-Pauls-Cathedral_Image-credit-Tomas-Sereda-min-scaled-e1690454082786.jpg')"></div><div class="day-body"><div class="tag">Dia 2 · Londres</div><h3>Iconos y mercados de la ciudad</h3><p class="places">Catedral de San Pablo, Millenium Bridge, Borough Market, Piccadilly Circus</p><p class="note">Jornada de orientación urbana visitando puntos emblematicos y espacios de vida local.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://www.visitlondon.com/-/media/images/london/visit/things-to-do/sightseeing/london-attractions/big-ben/big-ben-houses-of-parliament-shutterstock640x360jpg.jpg?h=360&w=640&rev=e8ecaf8f5b5c46138df9bdd608b8d5da&hash=A8313B21036432D858B3C6A3C59359E2')"></div><div class="day-body"><div class="tag">Dia 3 · Londres</div><h3>Historia y memoria en Londres</h3><p class="places">Big Ben, Abadia de Westminster, Museo de Guerra Imperial</p><p class="note">Recorrido por sitios historicos para comprender el contexto politico y social britanico.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://cadenaser.com/resizer/v2/NYJTXN4EJZF4NDSHPGZMIJSM7I.jpg?auth=742b55cf092c42c84c64beb48f6b72029b806f3d36f7b0d51755cdd8462b8ba1')"></div><div class="day-body"><div class="tag">Dia 4 · Londres</div><h3>Barrios con identidad propia</h3><p class="places">Notting Hill, Portobello Market, Leicester Square, Chinatown</p><p class="note">Exploracion de barrios iconicos para observar diversidad cultural, arte y dinamica urbana.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://www.letmeshowyoulondon.com/wp-content/uploads/2023/07/greenwich.jpg')"></div><div class="day-body"><div class="tag">Dia 5 · Londres</div><h3>Ciudad moderna y navegacion</h3><p class="places">Canary Wharf, Greenwich</p><p class="note">Visita a zonas de innovacion y patrimonio maritimo para contrastar pasado y presente de la ciudad.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://totenart.com/noticias/wp-content/uploads/2020/01/totenart-Museo-Britanico-Londres-1.jpg')"></div><div class="day-body"><div class="tag">Dia 6 · Londres</div><h3>Cultura, compras y entretenimiento</h3><p class="places">Museo Britanico, Oxford Street, The Now Building</p><p class="note">Dia de experiencias culturales y recreativas con foco en observacion de tendencias juveniles.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://thumbs.dreamstime.com/b/victoria-street-edinburgh-scotland-united-kingdom-steep-double-terraced-connects-royal-mile-to-grassmarket-square-old-397252203.jpg')"></div><div class="day-body"><div class="tag">Dia 7 · Edimburgo</div><h3>Patrimonio escoces</h3><p class="places">Royal Mile, Monumento a Scott, Museo Nacional de Escocia</p><p class="note">Recorrido historico por los principales simbolos de la capital escocesa.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://cdn-imgix.headout.com/media/images/e87de52c14e5ed44c472de964beb21bf-25331-EdinburghCastle-GuidedwalkingtourwithFastTrackEntry---002.jpg?auto=compress%2Cformat&q=90&crop=faces&fit=crop')"></div><div class="day-body"><div class="tag">Dia 8 · Edimburgo</div><h3>Miradores y rincones locales</h3><p class="places">Castillo de Edimburgo, Calton Hill, Dean Village</p><p class="note">Caminata panoramica por escenarios emblematicos para integrar paisaje y patrimonio urbano.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2019/08/07204310/abbey-road-4.jpg')"></div><div class="day-body"><div class="tag">Dia 9 · Londres</div><h3>Regreso y cultura pop</h3><p class="places">Cruce de Abbey Road, Stratford Shopping Centre</p><p class="note">Dia enfocado en iconos contemporaneos y tiempo de integracion grupal.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://upload.wikimedia.org/wikipedia/commons/1/13/Buckingham_Palace_from_gardens%2C_London%2C_UK_-_Diliff_%28cropped%29.jpg')"></div><div class="day-body"><div class="tag">Dia 10 · Londres</div><h3>Monarquia y vida urbana</h3><p class="places">Palacio de Buckingham, Green Park, Soho</p><p class="note">Recorrido por zonas historicas y espacios de gran movimiento cultural en la ciudad.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://images.locationscout.net/2015/04/the-natural-history-museum-united-kingdom.jpg?w=1080&q=60')"></div><div class="day-body"><div class="tag">Dia 11 · Londres</div><h3>Ciencia, deporte y ciudad</h3><p class="places">Museo de Ciencias Naturales, Estadio del Chelsea, Marble Arch</p><p class="note">Combinacion de contenido academico y experiencias urbanas en distintos puntos de Londres.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://www.lavanguardia.com/files/og_thumbnail/uploads/2022/06/11/62a4ee12b7bef.jpeg')"></div><div class="day-body"><div class="tag">Dia 12 · Londres</div><h3>Mercados y parques de la ciudad</h3><p class="places">Candem Town, Regents Park, Baker Street</p><p class="note">Jornada para descubrir estilos de vida locales, espacios verdes y sitios de interes historico.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://www.aiconnects.us/wp-content/uploads/2024/05/London-KitLicenceDepositphotos_26992293_1920.jpg')"></div><div class="day-body"><div class="tag">Dia 13 · Londres</div><h3>Cierre en la capital inglesa</h3><p class="places">Tower Bridge, London Eye, Trafalgar Square</p><p class="note">Ultimo gran recorrido por iconos londinenses antes de continuar con el itinerario.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://www.experienceoxfordshire.org/wp-content/uploads/2017/03/Experience-Oxfordshire-Oxford-compressed37-scaled.jpg')"></div><div class="day-body"><div class="tag">Dia 14 · Oxford</div><h3>Ruta academica en Oxford</h3><p class="places">Camara Radcliffe, Universidad Christ Church, Puente de los Suspiros</p><p class="note">Dia universitario para conocer tradiciones, arquitectura y vida estudiantil.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://www.urbansider.com/wp-content/uploads/Posts/Travel-Tips/Seine-EiffelTower-MetroLine6.jpg')"></div><div class="day-body"><div class="tag">Dia 15 · Paris</div><h3>Llegada y vistas del Sena</h3><p class="places">Torre Eiffel, Crucero por el Sena</p><p class="note">Inicio de la etapa en Francia con actividades introductorias y recorrido por el rio.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://media.cntraveler.com/photos/5a93281d8087c02669a7dc07/16:9/w_2560,c_limit/Arc%20de%20Triomphe_GettyImages-615063063.jpg')"></div><div class="day-body"><div class="tag">Dia 16 · Paris</div><h3>Clasicos parisinos</h3><p class="places">Arco del Triumfo, Opera Garnier, Basilica de Sacre Coeur</p><p class="note">Recorrido por hitos arquitectonicos y culturales fundamentales de la ciudad.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://media.cntraveler.com/photos/57d961ce3e6b32bf25f5ad0f/16:9/w_2560,c_limit/most-beautiful-paris-louvre-GettyImages-536267205.jpg')"></div><div class="day-body"><div class="tag">Dia 17 · Paris</div><h3>Arte y vida estudiantil</h3><p class="places">Museo del Louvre, Notre Dame, Barrio Latino, Jardines de Luxemburgo</p><p class="note">Jornada de contenido artistico e historico con enfoque en el patrimonio europeo.</p></div></article>
+        <article class="day-card"><div class="day-image" style="background-image: url('https://news.disneylandparis.com/app/uploads/2023/04/Disney_DLight-1.jpg')"></div><div class="day-body"><div class="tag">Dia 18 · Paris</div><h3>Cierre del viaje</h3><p class="places">Disney</p><p class="note">Ultima actividad grupal para finalizar la experiencia internacional antes del regreso.</p></div></article>
+      </div>
+    </section>
+
+    <section id="detailView" class="section detail-view">
+      <div class="detail-top">
+        <a id="backToItinerary" class="back-link" href="#">Volver al itinerario completo</a>
+        <div id="languageSelector" class="language-selector">
+          <button id="btnLangEs" class="lang-btn lang-btn-active" data-lang="es">Español</button>
+          <button id="btnLangEn" class="lang-btn" data-lang="en">English</button>
+        </div>
+        <div id="detailTag" class="detail-tag">Día</div>
+      </div>
+      <div id="detailImage" class="detail-image"></div>
+      <h3 id="detailTitle"></h3>
+      <p id="detailPlaces" class="places"></p>
+      <h4 class="destination-title">Destinos del dia</h4>
+      <div id="destinationGrid" class="destination-grid"></div>
+      <p id="detailNote" class="note"></p>
+      <p class="small" style="margin-top:12px;"></p>
+      <div class="detail-nav">
+        <a id="prevDayBtn" class="detail-nav-btn" href="Prueba Itinerario 18 dias.html" aria-label="Ir al dia anterior">Anterior</a>
+        <a id="nextDayBtn" class="detail-nav-btn" href="Prueba Itinerario 18 dias.html" aria-label="Ir al dia siguiente">Siguiente</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 id="servicesTitle">Servicios y acompañamiento</h2>
+      <p id="servicesP1" class="small">
+        El programa contempla acompañamiento permanente, coordinadores especializados en viajes educativos,
+        soporte ante emergencias y seguimiento diario de actividades.
+      </p>
+      <p id="servicesP2" class="small">
+        Incluye traslados internos entre ciudades, visitas culturales programadas, actividades pedagógicas
+        y espacios de integración para fortalecer autonomía, convivencia y aprendizaje intercultural.
+      </p>
+      <p id="servicesP3" class="small">
+        Se recomienda solicitar el detalle final de alojamiento, régimen de comidas y documentación requerida
+        según fecha de salida y condiciones del grupo.
+      </p>
+    </section>
+  </div>
+
+    <!-- EDITOR PANEL -->
+    <div id="editorPanel" class="editor-panel">
+      <div class="editor-header">
+        <h2 id="editorTitle">✎ Editor de Itinerario</h2>
+        <button id="closeEditorBtn" class="editor-close-btn">✕</button>
+      </div>
+      
+      <div class="editor-tabs">
+        <button class="editor-tab-btn active" data-tab="days" data-label-es="Días (18)" data-label-en="Days (18)">Días (18)</button>
+        <button class="editor-tab-btn" data-tab="destinations" data-label-es="Destinos por Ciudad" data-label-en="Destinations by City">Destinos por Ciudad</button>
+        <button class="editor-tab-btn" data-tab="main" data-label-es="Página Principal" data-label-en="Main Page">Página Principal</button>
+        <button class="editor-tab-btn" data-tab="io" data-label-es="Import/Export" data-label-en="Import/Export">Import/Export</button>
+      </div>
+
+      <!-- Days Tab -->
+      <div id="daysTab" class="editor-tab-content active">
+        <div id="daysList" class="days-list"></div>
+        <button id="addDayBtn" class="editor-btn editor-btn-primary" style="margin-top: 20px;" data-label-es="+ Agregar Día" data-label-en="+ Add Day">+ Agregar Día</button>
+      </div>
+
+      <!-- Destinations Tab -->
+      <div id="destinationsTab" class="editor-tab-content">
+        <div id="citiesSearchWrap" style="margin-bottom: 12px; display: flex; gap: 8px; align-items: center;">
+          <input id="citiesSearchInput" type="text" placeholder="Buscar ciudad..." data-placeholder-es="Buscar ciudad..." data-placeholder-en="Search city..." style="flex: 1; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+          <button id="addCityBtn" class="editor-btn editor-btn-primary" style="white-space: nowrap;" data-label-es="+ Ciudad" data-label-en="+ City">+ Ciudad</button>
+        </div>
+        <div id="citiesList" class="cities-list"></div>
+        <div id="destinationsByCity" style="display: none;">
+          <button id="backToCitiesBtn" class="editor-btn editor-btn-secondary" style="margin-bottom: 16px;" data-label-es="← Volver a Ciudades" data-label-en="← Back to Cities">← Volver a Ciudades</button>
+          <h3 id="cityTitle"></h3>
+          <div id="destSearchWrap" style="margin-bottom: 12px;">
+            <input id="destSearchInput" type="text" placeholder="Buscar destino..." data-placeholder-es="Buscar destino..." data-placeholder-en="Search destination..." style="width: 100%; padding: 8px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;">
+          </div>
+          <div id="destinationsInCityList"></div>
+          <button id="addDestinationBtn" class="editor-btn editor-btn-primary" style="margin-top: 20px;" data-label-es="+ Agregar Destino" data-label-en="+ Add Destination">+ Agregar Destino</button>
+        </div>
+      </div>
+
+      <!-- Main Page Tab -->
+      <div id="mainTab" class="editor-tab-content">
+        <div id="mainPageEditorForm" class="days-list"></div>
+        <button id="saveMainPageBtn" class="editor-btn editor-btn-primary" style="margin-top: 20px;" data-label-es="Guardar Página Principal" data-label-en="Save Main Page">Guardar Página Principal</button>
+      </div>
+
+      <!-- Import/Export Tab -->
+      <div id="ioTab" class="editor-tab-content">
+        <div style="margin-bottom: 20px;">
+          <h3 id="exportTitle" data-label-es="Exportar Datos" data-label-en="Export Data">Exportar Datos</h3>
+          <p id="exportDesc" style="margin: 0 0 10px; font-size: 0.9rem; color: #666;" data-label-es="Descarga un archivo JSON con todos los días y destinos. Puedes usarlo como respaldo o compartirlo." data-label-en="Download a JSON file with all days and destinations. Use it as a backup or share it.">Descarga un archivo JSON con todos los días y destinos. Puedes usarlo como respaldo o compartirlo.</p>
+          <button id="exportDaysBtn" class="editor-btn editor-btn-secondary" style="margin-right: 10px;" data-label-es="📥 Exportar Días" data-label-en="📥 Export Days">📥 Exportar Días</button>
+          <button id="exportDestinationsBtn" class="editor-btn editor-btn-secondary" style="margin-right: 10px;" data-label-es="📥 Exportar Destinos" data-label-en="📥 Export Destinations">📥 Exportar Destinos</button>
+          <button id="saveDestinationsServerBtn" class="editor-btn editor-btn-primary" data-label-es="💾 Guardar Destinos en Servidor" data-label-en="💾 Save Destinations to Server">💾 Guardar Destinos en Servidor</button>
+        </div>
+
+        <div style="border-top: 1px solid #ddd; padding-top: 20px;">
+          <h3 id="importTitle" data-label-es="Importar Datos" data-label-en="Import Data">Importar Datos</h3>
+          <p id="importDesc" style="margin: 0 0 10px; font-size: 0.9rem; color: #666;" data-label-es="Sube un archivo JSON para actualizar los días o destinos." data-label-en="Upload a JSON file to update days or destinations.">Sube un archivo JSON para actualizar los días o destinos.</p>
+          <div style="margin-bottom: 10px;">
+            <label id="importDaysLabel" style="display: block; margin-bottom: 8px; font-weight: 500;" data-label-es="Importar Días:" data-label-en="Import Days:">Importar Días:</label>
+            <input type="file" id="importDaysInput" accept=".json" style="display: block; margin-bottom: 10px;">
+            <button id="importDaysBtn" class="editor-btn editor-btn-secondary" data-label-es="Cargar Días" data-label-en="Load Days">Cargar Días</button>
+          </div>
+          <div>
+            <label id="importDestinationsLabel" style="display: block; margin-bottom: 8px; font-weight: 500;" data-label-es="Importar Destinos:" data-label-en="Import Destinations:">Importar Destinos:</label>
+            <input type="file" id="importDestinationsInput" accept=".json" style="display: block; margin-bottom: 10px;">
+            <button id="importDestinationsBtn" class="editor-btn editor-btn-secondary" data-label-es="Cargar Destinos" data-label-en="Load Destinations">Cargar Destinos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DAY EDIT MODAL -->
+    <div id="dayEditModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="dayEditTitle">Editar Día</h3>
+          <button class="modal-close-btn closeDayModal">✕</button>
+        </div>
+        <div id="dayEditForm"></div>
+        <div class="modal-footer">
+          <button id="saveDayBtn" class="editor-btn editor-btn-primary">Guardar</button>
+          <button id="deleteDayBtn" class="editor-btn editor-btn-danger" style="margin-right: auto; display: none;">Eliminar día</button>
+          <button class="editor-btn editor-btn-secondary closeDayModal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESTINATION EDIT MODAL -->
+    <div id="destinationEditModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="destinationEditTitle">Editar Destino</h3>
+          <button class="modal-close-btn closeDestinationModal">✕</button>
+        </div>
+        <div id="destinationEditForm"></div>
+        <div class="modal-footer">
+          <button id="saveDestinationBtn" class="editor-btn editor-btn-primary">Guardar</button>
+          <button id="deleteDestinationBtn" class="editor-btn editor-btn-danger" style="margin-right: auto;">Eliminar</button>
+          <button class="editor-btn editor-btn-secondary closeDestinationModal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+  <script>
+    const rootHtml = document.documentElement;
+    const runtimeParams = new URLSearchParams(window.location.search);
+    let dayCards = Array.from(document.querySelectorAll('.day-card'));
+    const getDaysContainer = () => document.querySelector('.days');
+    const refreshDayCards = () => { dayCards = Array.from(getDaysContainer()?.querySelectorAll('.day-card') || []); };
+    const detailView = document.getElementById('detailView');
+    const backToItinerary = document.getElementById('backToItinerary');
+    const exportLockedHtmlBtn = document.getElementById('exportLockedHtmlBtn');
+    const exportEditableHtmlBtn = document.getElementById('exportEditableHtmlBtn');
+    const lockedLanguageFromWindow = window.__LOCKED_LANGUAGE;
+    const lockedLanguageFromDataset = rootHtml?.dataset?.lockedLanguage;
+    const lockedLanguage = (lockedLanguageFromWindow === 'en' || lockedLanguageFromWindow === 'es')
+      ? lockedLanguageFromWindow
+      : ((lockedLanguageFromDataset === 'en' || lockedLanguageFromDataset === 'es') ? lockedLanguageFromDataset : null);
+    const isLanguageLocked = Boolean(lockedLanguage);
+    const hideLanguageSelectors = Boolean(window.__HIDE_LANGUAGE_SELECTOR)
+      || rootHtml?.dataset?.hideLanguageSelector === '1'
+      || isLanguageLocked;
+    let hideMainLogo = Boolean(window.__HIDE_MAIN_LOGO)
+      || rootHtml?.dataset?.hideMainLogo === '1'
+      || runtimeParams.get('logo') === '0';
+    const heroSection = document.querySelector('.hero');
+    const heroLogoWrap = document.getElementById('heroLogoWrap');
+    const heroLogoImage = document.getElementById('heroLogoImage');
+
+    const applyHeroBranding = () => {
+      const logoSrc = heroLogoImage?.getAttribute('src') || '';
+      const hasLogo = logoSrc.trim().length > 0;
+
+      if (heroSection) {
+        heroSection.classList.toggle('hero-no-logo', hideMainLogo || !hasLogo);
+      }
+
+      if (heroLogoWrap) {
+        heroLogoWrap.style.display = (hideMainLogo || !hasLogo) ? 'none' : '';
+      }
+
+      if (heroLogoImage) {
+        heroLogoImage.style.display = hasLogo ? 'block' : 'none';
+      }
+
+      rootHtml.dataset.hideMainLogo = hideMainLogo ? '1' : '0';
+    };
+
+    applyHeroBranding();
+    
+    // Try to load database from JSON file
+    let destinationDb = null;
+    let customCities = [];
+    const ADMIN_FLAG_KEY = 'itineraryAdminMode';
+    const ADMIN_PASSWORD = 'capri-admin';
+
+    const isAdminUser = () => {
+      try {
+        return localStorage.getItem(ADMIN_FLAG_KEY) === '1';
+      } catch (_) {
+        return false;
+      }
+    };
+
+    const ensureAdminAccess = (actionLabelEs, actionLabelEn) => {
+      if (isAdminUser()) return true;
+      const message = currentLanguage === 'es'
+        ? `Solo admins pueden ${actionLabelEs}. Ingresa clave de admin:`
+        : `Only admins can ${actionLabelEn}. Enter admin password:`;
+      const entered = prompt(message);
+      if (!entered) return false;
+      if (entered === ADMIN_PASSWORD) {
+        try { localStorage.setItem(ADMIN_FLAG_KEY, '1'); } catch (_) {}
+        alert(currentLanguage === 'es' ? '✅ Modo admin activado.' : '✅ Admin mode enabled.');
+        return true;
+      }
+      alert(currentLanguage === 'es' ? '❌ Clave admin incorrecta.' : '❌ Incorrect admin password.');
+      return false;
+    };
+    const isFileProtocol = window.location.protocol === 'file:';
+    if (window.__EMBEDDED_DB && typeof window.__EMBEDDED_DB === 'object') {
+      destinationDb = window.__EMBEDDED_DB;
+    }
+
+    if (!destinationDb) {
+      const embeddedDbNode = document.getElementById('__embeddedDbJson');
+      if (embeddedDbNode?.textContent) {
+        try {
+          destinationDb = JSON.parse(embeddedDbNode.textContent);
+        } catch (error) {
+          console.warn('Could not parse embedded DB JSON:', error);
+        }
+      }
+    }
+
+    // UI translations for common interface elements
+    const uiTranslations = {
+      'Dia': { es: 'Día', en: 'Day' },
+      'Itinerario detallado': { es: 'Itinerario detallado', en: 'Detailed Itinerary' },
+      'Presentación general': { es: 'Presentación general', en: 'General Overview' },
+      'Servicios y acompañamiento': { es: 'Servicios y acompañamiento', en: 'Services and Support' },
+      'Destinos del dia': { es: 'Destinos del dia', en: 'Destinations of the Day' },
+      'Anterior': { es: 'Anterior', en: 'Previous' },
+      'Siguiente': { es: 'Siguiente', en: 'Next' },
+      'Volver al itinerario completo': { es: 'Volver al itinerario completo', en: 'Back to full itinerary' },
+      'Exportar HTML fijo': { es: 'Exportar HTML fijo', en: 'Export Locked HTML' },
+      'Exportar HTML editable': { es: 'Exportar HTML editable', en: 'Export Editable HTML' },
+      'Londres y París 2026': { es: 'Londres y París 2026', en: 'London and Paris 2026' },
+      'London y Paris 2026': { es: 'Londres y París 2026', en: 'London and Paris 2026' },
+      'Programa educativo y cultural para adolescentes. Una propuesta equilibrada entre aprendizaje de inglés, visitas académicas, experiencias culturales y actividades grupales.': { es: 'Programa educativo y cultural para adolescentes. Una propuesta equilibrada entre aprendizaje de inglés, visitas académicas, experiencias culturales y actividades grupales.', en: 'Educational and cultural program for teenagers. A balanced proposal between English learning, academic visits, cultural experiences, and group activities.' },
+      'Este viaje está pensado para estudiantes adolescentes que buscan mejorar el idioma, ganar autonomía y conocer ciudades icónicas de Europa en un entorno seguro, acompañados por coordinadores.': { es: 'Este viaje está pensado para estudiantes adolescentes que buscan mejorar el idioma, ganar autonomía y conocer ciudades icónicas de Europa en un entorno seguro, acompañados por coordinadores.', en: 'This trip is designed for teenage students who seek to improve their language skills, gain autonomy, and discover iconic European cities in a safe environment, accompanied by coordinators.' },
+      'Enfoque académico': { es: 'Enfoque académico', en: 'Academic focus' },
+      'Clases de inglés en Londres, desafíos de comunicación y actividades guiadas para practicar el idioma en contexto real.': { es: 'Clases de inglés en Londres, desafíos de comunicación y actividades guiadas para practicar el idioma en contexto real.', en: 'English classes in London, communication challenges, and guided activities to practice the language in real contexts.' },
+      'Aprendizaje vivencial': { es: 'Aprendizaje vivencial', en: 'Experiential learning' },
+      'Museos, universidades, barrios históricos y recorridos culturales para conectar contenidos escolares con experiencias concretas.': { es: 'Museos, universidades, barrios históricos y recorridos culturales para conectar contenidos escolares con experiencias concretas.', en: 'Museums, universities, historic neighborhoods, and cultural tours to connect school content with concrete experiences.' },
+      'Experiencia internacional': { es: 'Experiencia internacional', en: 'International experience' },
+      'Convivencia grupal, uso de transporte público, responsabilidad personal y descubrimiento de nuevas culturas.': { es: 'Convivencia grupal, uso de transporte público, responsabilidad personal y descubrimiento de nuevas culturas.', en: 'Group coexistence, public transportation use, personal responsibility, and discovery of new cultures.' },
+      'Recorrido de 18 días con base en Londres (11 días), Edimburgo (2 días, tour opcional con costo adicional), Oxford (1 día) y París (4 días).': { es: 'Recorrido de 18 días con base en Londres (11 días), Edimburgo (2 días, tour opcional con costo adicional), Oxford (1 día) y París (4 días).', en: '18-day itinerary based in London (11 days), Edinburgh (2 days, optional tour with additional cost), Oxford (1 day), and Paris (4 days).' },
+      'Se recomienda solicitar el detalle final de alojamiento, régimen de comidas y documentación requerida según fecha de salida y condiciones del grupo.': { es: 'Se recomienda solicitar el detalle final de alojamiento, régimen de comidas y documentación requerida según fecha de salida y condiciones del grupo.', en: 'It is recommended to request final details on accommodation, meal plan, and required documentation according to departure date and group conditions.' },
+      'El programa contempla acompañamiento permanente, coordinadores especializados en viajes educativos, soporte ante emergencias y seguimiento diario de actividades.': { es: 'El programa contempla acompañamiento permanente, coordinadores especializados en viajes educativos, soporte ante emergencias y seguimiento diario de actividades.', en: 'The program includes permanent support, coordinators specialized in educational travel, emergency assistance, and daily activity follow-up.' },
+      'Incluye traslados internos entre ciudades, visitas culturales programadas, actividades pedagógicas y espacios de integración para fortalecer autonomía, convivencia y aprendizaje intercultural.': { es: 'Incluye traslados internos entre ciudades, visitas culturales programadas, actividades pedagógicas y espacios de integración para fortalecer autonomía, convivencia y aprendizaje intercultural.', en: 'It includes internal transfers between cities, scheduled cultural visits, pedagogical activities, and integration spaces to strengthen autonomy, coexistence, and intercultural learning.' },
+      'Llegada y primer reconocimiento': { es: 'Llegada y primer reconocimiento', en: 'Arrival and first orientation' },
+      'Iconos y mercados de la ciudad': { es: 'Iconos y mercados de la ciudad', en: 'Icons and city markets' },
+      'Historia y memoria en Londres': { es: 'Historia y memoria en Londres', en: 'History and memory in London' },
+      'Barrios con identidad propia': { es: 'Barrios con identidad propia', en: 'Neighborhoods with unique identity' },
+      'Ciudad moderna y navegacion': { es: 'Ciudad moderna y navegacion', en: 'Modern city and navigation' },
+      'Cultura, compras y entretenimiento': { es: 'Cultura, compras y entretenimiento', en: 'Culture, shopping and entertainment' },
+      'Patrimonio escoces': { es: 'Patrimonio escoces', en: 'Scottish heritage' },
+      'Miradores y rincones locales': { es: 'Miradores y rincones locales', en: 'Viewpoints and local corners' },
+      'Regreso y cultura pop': { es: 'Regreso y cultura pop', en: 'Return and pop culture' },
+      'Monarquia y vida urbana': { es: 'Monarquia y vida urbana', en: 'Monarchy and urban life' },
+      'Ciencia, deporte y ciudad': { es: 'Ciencia, deporte y ciudad', en: 'Science, sports and city' },
+      'Mercados y parques de la ciudad': { es: 'Mercados y parques de la ciudad', en: 'Markets and city parks' },
+      'Cierre en la capital inglesa': { es: 'Cierre en la capital inglesa', en: 'Closing in the English capital' },
+      'Ruta academica en Oxford': { es: 'Ruta academica en Oxford', en: 'Academic route in Oxford' },
+      'Llegada y vistas del Sena': { es: 'Llegada y vistas del Sena', en: 'Arrival and Seine views' },
+      'Clasicos parisinos': { es: 'Clasicos parisinos', en: 'Parisian classics' },
+      'Arte y vida estudiantil': { es: 'Arte y vida estudiantil', en: 'Art and student life' },
+      'Cierre del viaje': { es: 'Cierre del viaje', en: 'End of the trip' },
+      'Transito hacia Paris': { es: 'Transito hacia Paris', en: 'Transit to Paris' },
+      'Iconos y museos parisinos': { es: 'Iconos y museos parisinos', en: 'Parisian icons and museums' },
+      'Arribo al destino e inicio de la experiencia con recorrido de reconocimiento por el entorno cercano.': { es: 'Arribo al destino e inicio de la experiencia con recorrido de reconocimiento por el entorno cercano.', en: 'Arrival at destination and beginning of the experience with an orientation walk around the nearby area.' },
+      'Jornada de orientación urbana visitando puntos emblematicos y espacios de vida local.': { es: 'Jornada de orientación urbana visitando puntos emblematicos y espacios de vida local.', en: 'Urban orientation day visiting emblematic points and local-life spaces.' },
+      'Recorrido por sitios historicos para comprender el contexto politico y social britanico.': { es: 'Recorrido por sitios historicos para comprender el contexto politico y social britanico.', en: 'Tour through historic sites to understand the British political and social context.' },
+      'Exploracion de barrios iconicos para observar diversidad cultural, arte y dinamica urbana.': { es: 'Exploracion de barrios iconicos para observar diversidad cultural, arte y dinamica urbana.', en: 'Exploration of iconic neighborhoods to observe cultural diversity, art, and urban dynamics.' },
+      'Visita a zonas de innovacion y patrimonio maritimo para contrastar pasado y presente de la ciudad.': { es: 'Visita a zonas de innovacion y patrimonio maritimo para contrastar pasado y presente de la ciudad.', en: 'Visit to innovation zones and maritime heritage sites to contrast the city’s past and present.' },
+      'Dia de experiencias culturales y recreativas con foco en observacion de tendencias juveniles.': { es: 'Dia de experiencias culturales y recreativas con foco en observacion de tendencias juveniles.', en: 'Day of cultural and recreational experiences focused on observing youth trends.' },
+      'Recorrido historico por los principales simbolos de la capital escocesa.': { es: 'Recorrido historico por los principales simbolos de la capital escocesa.', en: 'Historic tour through the main symbols of the Scottish capital.' },
+      'Caminata panoramica por escenarios emblematicos para integrar paisaje y patrimonio urbano.': { es: 'Caminata panoramica por escenarios emblematicos para integrar paisaje y patrimonio urbano.', en: 'Panoramic walk through emblematic settings to integrate landscape and urban heritage.' },
+      'Dia enfocado en iconos contemporaneos y tiempo de integracion grupal.': { es: 'Dia enfocado en iconos contemporaneos y tiempo de integracion grupal.', en: 'Day focused on contemporary icons and group integration time.' },
+      'Recorrido por zonas historicas y espacios de gran movimiento cultural en la ciudad.': { es: 'Recorrido por zonas historicas y espacios de gran movimiento cultural en la ciudad.', en: 'Tour through historic zones and areas of strong cultural activity in the city.' },
+      'Combinacion de contenido academico y experiencias urbanas en distintos puntos de Londres.': { es: 'Combinacion de contenido academico y experiencias urbanas en distintos puntos de Londres.', en: 'Combination of academic content and urban experiences across different points of London.' },
+      'Jornada para descubrir estilos de vida locales, espacios verdes y sitios de interes historico.': { es: 'Jornada para descubrir estilos de vida locales, espacios verdes y sitios de interes historico.', en: 'Day to discover local lifestyles, green spaces, and sites of historic interest.' },
+      'Ultimo gran recorrido por iconos londinenses antes de continuar con el itinerario.': { es: 'Ultimo gran recorrido por iconos londinenses antes de continuar con el itinerario.', en: 'Final major tour of London icons before continuing the itinerary.' },
+      'Dia universitario para conocer tradiciones, arquitectura y vida estudiantil.': { es: 'Dia universitario para conocer tradiciones, arquitectura y vida estudiantil.', en: 'University-focused day to learn about traditions, architecture, and student life.' },
+      'Inicio de la etapa en Francia con actividades introductorias y recorrido por el rio.': { es: 'Inicio de la etapa en Francia con actividades introductorias y recorrido por el rio.', en: 'Start of the France stage with introductory activities and a river tour.' },
+      'Recorrido por hitos arquitectonicos y culturales fundamentales de la ciudad.': { es: 'Recorrido por hitos arquitectonicos y culturales fundamentales de la ciudad.', en: 'Tour of the city’s key architectural and cultural landmarks.' },
+      'Jornada de contenido artistico e historico con enfoque en el patrimonio europeo.': { es: 'Jornada de contenido artistico e historico con enfoque en el patrimonio europeo.', en: 'Day of artistic and historical content focused on European heritage.' },
+      'Ultima actividad grupal para finalizar la experiencia internacional antes del regreso.': { es: 'Ultima actividad grupal para finalizar la experiencia internacional antes del regreso.', en: 'Final group activity to conclude the international experience before returning.' }
+    };
+
+    const cityTranslations = {
+      Londres: { es: 'Londres', en: 'London' },
+      Edimburgo: { es: 'Edimburgo', en: 'Edinburgh' },
+      Paris: { es: 'Paris', en: 'Paris' },
+      'París': { es: 'París', en: 'Paris' },
+      Oxford: { es: 'Oxford', en: 'Oxford' }
+    };
+
+    const normalizeUiKey = (text) => String(text || '').replace(/\s+/g, ' ').trim();
+
+    const uiTranslationsNormalized = Object.fromEntries(
+      Object.entries(uiTranslations).map(([key, value]) => [normalizeUiKey(key), value])
+    );
+
+    const translateUiTextToLang = (text, lang) => {
+      const rawText = String(text || '');
+      const entry = uiTranslations[rawText] || uiTranslationsNormalized[normalizeUiKey(rawText)];
+      if (entry) return entry[lang] || text;
+      return text;
+    };
+
+    const translateUiText = (text) => translateUiTextToLang(text, currentLanguage);
+
+    const translateCityNamesToLang = (text, lang) => {
+      if (lang === 'es') {
+        return text;
+      }
+
+      let result = String(text || '');
+      Object.entries(cityTranslations).forEach(([city, labels]) => {
+        const escaped = city.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        result = result.replace(new RegExp(`\\b${escaped}\\b`, 'g'), labels[lang] || city);
+      });
+      return result;
+    };
+
+    const translateCityNames = (text) => translateCityNamesToLang(text, currentLanguage);
+
+    const uiTranslationsByEnNormalized = Object.fromEntries(
+      Object.entries(uiTranslations).map(([es, value]) => [normalizeUiKey(value?.en || ''), es])
+    );
+
+    const translateTextWithApi = async (text, fromLang, toLang) => {
+      const clean = String(text || '').trim();
+      if (!clean || fromLang === toLang) return clean;
+
+      const uiMatch = fromLang === 'es'
+        ? translateUiTextToLang(clean, toLang)
+        : (uiTranslationsByEnNormalized[normalizeUiKey(clean)] || clean);
+      if (uiMatch && uiMatch !== clean) {
+        return translateCityNamesToLang(uiMatch, toLang);
+      }
+
+      try {
+        const url = `https://api.mymemory.translated.net/get?q=${encodeURIComponent(clean)}&langpair=${fromLang}|${toLang}`;
+        const response = await fetch(url);
+        if (!response.ok) return clean;
+        const data = await response.json();
+        const translated = data?.responseData?.translatedText;
+        if (!translated || typeof translated !== 'string') return clean;
+        return translated.trim();
+      } catch (error) {
+        console.warn('Translation API unavailable:', error);
+        return clean;
+      }
+    };
+
+    const translatePlacesList = async (text, fromLang, toLang) => {
+      const raw = String(text || '').trim();
+      if (!raw || fromLang === toLang) return raw;
+
+      const records = getDestinationArray();
+      const parts = raw.split(',').map((p) => p.trim()).filter((p) => p.length > 0);
+      const translated = await Promise.all(parts.map(async (part) => {
+        const record = records.find((r) => {
+          const es = typeof r?.place === 'string' ? r.place : (r?.place?.es || '');
+          const en = typeof r?.place === 'string' ? r.place : (r?.place?.en || '');
+          return normalizeText(part) === normalizeText(es) || normalizeText(part) === normalizeText(en);
+        });
+
+        if (record) {
+          return toLang === 'es'
+            ? (typeof record.place === 'string' ? record.place : (record.place?.es || record.place?.en || part))
+            : (typeof record.place === 'string' ? record.place : (record.place?.en || record.place?.es || part));
+        }
+
+        return await translateTextWithApi(part, fromLang, toLang);
+      }));
+
+      return translated.join(', ');
+    };
+
+    const resolveCanonicalCity = (cityName) => {
+      const rawCity = String(cityName || '').trim();
+      if (!rawCity) return rawCity;
+
+      const normalizedRaw = normalizeText(rawCity);
+      for (const [canonicalCity, labels] of Object.entries(cityTranslations)) {
+        const normalizedCanonical = normalizeText(canonicalCity);
+        const normalizedEs = normalizeText(labels?.es || '');
+        const normalizedEn = normalizeText(labels?.en || '');
+        if (
+          normalizedRaw === normalizedCanonical ||
+          normalizedRaw === normalizedEs ||
+          normalizedRaw === normalizedEn
+        ) {
+          return canonicalCity;
+        }
+      }
+
+      return rawCity;
+    };
+
+    const applyMainPageLanguage = () => {
+      const getTextByLang = (element) => {
+        const esText = element.dataset.esText || element.textContent.trim();
+        element.dataset.esText = esText;
+        if (currentLanguage === 'es') {
+          return esText;
+        }
+        return (element.dataset.enText && element.dataset.enText.trim().length > 0)
+          ? element.dataset.enText
+          : translateCityNamesToLang(translateUiTextToLang(esText, 'en'), 'en');
+      };
+
+      const heroTitle = document.querySelector('.hero-content h1');
+      if (heroTitle) {
+        heroTitle.textContent = translateCityNames(getTextByLang(heroTitle));
+      }
+
+      const heroIntro = document.querySelector('.hero-content p');
+      if (heroIntro) {
+        heroIntro.textContent = translateCityNames(getTextByLang(heroIntro));
+      }
+
+      document.querySelectorAll('.section h2, .section .lead, .section .small, .day-card h3, .day-card .note, .destination-title, .highlight-desc').forEach((element) => {
+        element.textContent = translateCityNames(getTextByLang(element));
+      });
+
+      document.querySelectorAll('.highlights .highlight').forEach((block) => {
+        const label = block.querySelector('strong');
+        if (!label) {
+          return;
+        }
+
+        label.textContent = translateCityNames(getTextByLang(label));
+
+        const descElement = block.querySelector('.highlight-desc');
+        if (descElement) {
+          descElement.textContent = translateCityNames(getTextByLang(descElement));
+        }
+      });
+
+      dayCards.forEach((card) => {
+        const tagElement = card.querySelector('.tag');
+        if (tagElement) {
+          if (!tagElement.dataset.esText) {
+            tagElement.dataset.esText = tagElement.textContent.trim();
+          }
+          const baseTagEs = tagElement.dataset.esText;
+          const baseTagEn = tagElement.dataset.enText && tagElement.dataset.enText.trim().length > 0
+            ? tagElement.dataset.enText
+            : translateCityNamesToLang(baseTagEs.replace(/^Dia\b/i, 'Day'), 'en');
+          tagElement.textContent = currentLanguage === 'en' ? baseTagEn : baseTagEs;
+        }
+
+        const placesElement = card.querySelector('.places');
+        if (placesElement) {
+          if (!placesElement.dataset.esText) {
+            placesElement.dataset.esText = placesElement.textContent.trim();
+          }
+
+           if (currentLanguage === 'en' && placesElement.dataset.enText && placesElement.dataset.enText.trim().length > 0) {
+            placesElement.textContent = placesElement.dataset.enText;
+            return;
+          }
+
+          if (currentLanguage === 'es' || !destinationDb) {
+            placesElement.textContent = placesElement.dataset.esText;
+          } else {
+            const cardTag = card.querySelector('.tag')?.dataset.esText || card.querySelector('.tag')?.textContent || '';
+            const cities = getCitiesFromTag(cardTag);
+            const translatedPlaces = placesElement.dataset.esText
+              .split(',')
+              .map((place) => place.trim())
+              .filter((place) => place.length > 0)
+              .map((place) => {
+                const record = findDestinationRecord(destinationDb, cities, place);
+                return getLangText(record?.place || place);
+              });
+            placesElement.textContent = translatedPlaces.join(', ');
+          }
+        }
+      });
+
+      const backBtn = document.getElementById('backToItinerary');
+      if (backBtn) {
+        backBtn.textContent = translateUiText('Volver al itinerario completo');
+      }
+
+      if (exportLockedHtmlBtn) {
+        exportLockedHtmlBtn.textContent = translateUiText('Exportar HTML fijo');
+      }
+
+      if (exportEditableHtmlBtn) {
+        exportEditableHtmlBtn.textContent = translateUiText('Exportar HTML editable');
+      }
+    };
+    
+    const normalizeText = (text) => {
+      return String(text || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    };
+
+    const EDITOR_STORAGE_KEY = 'itineraryEditorStateV1';
+    const EDITOR_STORAGE_KEY_SESSION = 'itineraryEditorStateV1Session';
+    const EDITOR_STATE_NAME_PREFIX = '__ITINERARY_EDITOR_STATE__=';
+    const MAIN_PAGE_FIELD_IDS = [
+      'heroMainTitle', 'heroMainIntro', 'presentationTitle', 'presentationLead',
+      'highlight1Title', 'highlight1Desc', 'highlight2Title', 'highlight2Desc',
+      'highlight3Title', 'highlight3Desc', 'itineraryTitle', 'itineraryLead',
+      'servicesTitle', 'servicesP1', 'servicesP2', 'servicesP3'
+    ];
+
+    const readEditorStateRaw = () => {
+      try {
+        const local = localStorage.getItem(EDITOR_STORAGE_KEY);
+        if (local) return local;
+      } catch (error) {
+        console.warn('localStorage read failed:', error);
+      }
+
+      try {
+        const session = sessionStorage.getItem(EDITOR_STORAGE_KEY_SESSION);
+        if (session) return session;
+      } catch (error) {
+        console.warn('sessionStorage read failed:', error);
+      }
+
+      try {
+        if (typeof window.name === 'string' && window.name.startsWith(EDITOR_STATE_NAME_PREFIX)) {
+          return window.name.slice(EDITOR_STATE_NAME_PREFIX.length);
+        }
+      } catch (error) {
+        console.warn('window.name read failed:', error);
+      }
+
+      return null;
+    };
+
+    const writeEditorStateRaw = (raw) => {
+      let wroteAny = false;
+
+      try {
+        localStorage.setItem(EDITOR_STORAGE_KEY, raw);
+        wroteAny = true;
+      } catch (error) {
+        console.warn('localStorage save failed:', error);
+      }
+
+      try {
+        sessionStorage.setItem(EDITOR_STORAGE_KEY_SESSION, raw);
+        wroteAny = true;
+      } catch (error) {
+        console.warn('sessionStorage save failed:', error);
+      }
+
+      try {
+        window.name = `${EDITOR_STATE_NAME_PREFIX}${raw}`;
+        wroteAny = true;
+      } catch (error) {
+        console.warn('window.name save failed:', error);
+      }
+
+      return wroteAny;
+    };
+
+    const getPersistedEditorState = () => {
+      try {
+        const raw = readEditorStateRaw();
+        if (!raw) return null;
+        const parsed = JSON.parse(raw);
+        return (parsed && typeof parsed === 'object') ? parsed : null;
+      } catch (error) {
+        console.warn('Could not parse saved editor state:', error);
+        return null;
+      }
+    };
+
+    const collectDaysState = () => {
+      refreshDayCards();
+      return Array.from(dayCards).map((card, i) => ({
+        day: i + 1,
+        tag: card.querySelector('.tag')?.dataset?.esText || card.querySelector('.tag')?.textContent || '',
+        tagEn: card.querySelector('.tag')?.dataset?.enText || '',
+        title: card.querySelector('h3')?.dataset?.esText || card.querySelector('h3')?.textContent || '',
+        titleEn: card.querySelector('h3')?.dataset?.enText || '',
+        places: card.querySelector('.places')?.dataset?.esText || card.querySelector('.places')?.textContent || '',
+        placesEn: card.querySelector('.places')?.dataset?.enText || '',
+        note: card.querySelector('.note')?.dataset?.esText || card.querySelector('.note')?.textContent || '',
+        noteEn: card.querySelector('.note')?.dataset?.enText || '',
+        image: card.querySelector('.day-image')?.style.backgroundImage?.match(/url\(['"]?(.*?)['"]?\)/)?.[1] || ''
+      }));
+    };
+
+    const applyDaysState = (days) => {
+      if (!Array.isArray(days) || days.length === 0) return;
+
+      const daysContainer = getDaysContainer();
+      if (!daysContainer) return;
+
+      daysContainer.innerHTML = '';
+
+      days.forEach((dayData, i) => {
+        if (!dayData) return;
+
+        const card = document.createElement('article');
+        card.className = 'day-card';
+
+        const tagEs = dayData.tag || `Día ${i + 1}`;
+        const tagEn = dayData.tagEn || '';
+        const titleEs = dayData.title || `Día ${i + 1}`;
+        const titleEn = dayData.titleEn || '';
+        const placesEs = dayData.places || '';
+        const placesEn = dayData.placesEn || '';
+        const noteEs = dayData.note || '';
+        const noteEn = dayData.noteEn || '';
+        const image = dayData.image || '';
+
+        card.innerHTML = `
+          <div class="day-image"></div>
+          <div class="day-body">
+            <div class="tag"></div>
+            <h3></h3>
+            <p class="places"></p>
+            <p class="note"></p>
+          </div>
+        `;
+
+        const tagEl = card.querySelector('.tag');
+        const titleEl = card.querySelector('h3');
+        const placesEl = card.querySelector('.places');
+        const noteEl = card.querySelector('.note');
+        const imageEl = card.querySelector('.day-image');
+
+        if (tagEl) {
+          tagEl.textContent = tagEs;
+          tagEl.dataset.esText = tagEs;
+          if (tagEn) tagEl.dataset.enText = tagEn;
+        }
+
+        if (titleEl) {
+          titleEl.textContent = titleEs;
+          titleEl.dataset.esText = titleEs;
+          if (titleEn) titleEl.dataset.enText = titleEn;
+        }
+
+        if (placesEl) {
+          placesEl.textContent = placesEs;
+          placesEl.dataset.esText = placesEs;
+          if (placesEn) placesEl.dataset.enText = placesEn;
+        }
+
+        if (noteEl) {
+          noteEl.textContent = noteEs;
+          noteEl.dataset.esText = noteEs;
+          if (noteEn) noteEl.dataset.enText = noteEn;
+        }
+
+        if (imageEl && image) {
+          imageEl.style.backgroundImage = `url('${image}')`;
+        }
+
+        daysContainer.appendChild(card);
+      });
+
+      refreshDayCards();
+    };
+
+    const collectMainPageState = () => {
+      const result = {};
+      MAIN_PAGE_FIELD_IDS.forEach((id) => {
+        const element = document.getElementById(id);
+        if (!element) return;
+        const es = element.dataset.esText || element.textContent.trim() || '';
+        const en = element.dataset.enText || '';
+        result[id] = { es, en };
+      });
+      return result;
+    };
+
+    const collectBrandingState = () => ({
+      browserTitle: document.title || '',
+      logoUrl: heroLogoImage?.getAttribute('src') || '',
+      hideLogo: hideMainLogo
+    });
+
+    const applyMainPageState = (state) => {
+      if (!state || typeof state !== 'object') return;
+      MAIN_PAGE_FIELD_IDS.forEach((id) => {
+        const element = document.getElementById(id);
+        const value = state[id];
+        if (!element || !value) return;
+        const es = String(value.es || '').trim();
+        const en = String(value.en || '').trim();
+        if (es.length > 0) {
+          element.dataset.esText = es;
+        }
+        if (en.length > 0) {
+          element.dataset.enText = en;
+        }
+      });
+    };
+
+    const applyBrandingState = (state) => {
+      if (!state || typeof state !== 'object') return;
+
+      if (typeof state.browserTitle === 'string' && state.browserTitle.trim().length > 0) {
+        document.title = state.browserTitle.trim();
+      }
+
+      if (typeof state.logoUrl === 'string' && heroLogoImage) {
+        heroLogoImage.setAttribute('src', state.logoUrl.trim());
+      }
+
+      if (typeof state.hideLogo !== 'undefined') {
+        hideMainLogo = Boolean(state.hideLogo);
+      }
+
+      applyHeroBranding();
+    };
+
+    const saveEditorState = () => {
+      try {
+        const destinationSnapshot = getDestinationArray().map((record) => ({
+          city: record?.city || '',
+          place: record?.place || '',
+          description: record?.description || '',
+          image: record?.image || ''
+        }));
+
+        const payload = {
+          version: 1,
+          days: collectDaysState(),
+          destinations: destinationSnapshot,
+          mainPage: collectMainPageState(),
+          branding: collectBrandingState(),
+          customCities: customCities
+        };
+
+        const raw = JSON.stringify(payload);
+        const wroteAny = writeEditorStateRaw(raw);
+        if (!wroteAny) {
+          console.warn('Could not persist editor state in any storage backend.');
+          return;
+        }
+        console.log('💾 Editor state saved:', `${Math.round(raw.length / 1024)} KB`);
+      } catch (error) {
+        console.warn('Could not save editor state:', error);
+      }
+    };
+
+    const persistedEditorState = getPersistedEditorState();
+    let persistedEditorStateApplied = false;
+
+    const applyPersistedEditorState = () => {
+      if (persistedEditorStateApplied || !persistedEditorState) return;
+
+      if (Array.isArray(persistedEditorState.days)) {
+        applyDaysState(persistedEditorState.days);
+      }
+
+      if (Array.isArray(persistedEditorState.destinations) && persistedEditorState.destinations.length > 0) {
+        destinationDb = buildDatabaseFromJson({ records: persistedEditorState.destinations });
+      }
+
+      if (persistedEditorState.mainPage && typeof persistedEditorState.mainPage === 'object') {
+        applyMainPageState(persistedEditorState.mainPage);
+      }
+
+      if (persistedEditorState.branding && typeof persistedEditorState.branding === 'object') {
+        applyBrandingState(persistedEditorState.branding);
+      }
+
+      if (Array.isArray(persistedEditorState.customCities)) {
+        persistedEditorState.customCities.forEach(c => {
+          if (!customCities.includes(c)) customCities.push(c);
+          const canonical = c;
+          if (!cityTranslations[canonical]) cityTranslations[canonical] = { es: c, en: c };
+          const norm = normalizeText(c);
+          if (destinationDb && !destinationDb.byCity[norm]) destinationDb.byCity[norm] = [];
+        });
+      }
+
+      persistedEditorStateApplied = true;
+      console.log('✅ Applied persisted editor state from localStorage');
+    };
+
+    const buildDatabaseFromJson = (data) => {
+      const db = { records: [], byCity: {}, cityNameByNorm: {} };
+      const cityNorms = new Set();
+      
+      data.records.forEach(record => {
+        // Add normalized fields for searching
+        const cityNorm = normalizeText(record.city);
+        const placeEs = typeof record.place === 'string' ? record.place : record.place?.es || '';
+        const placeEn = typeof record.place === 'string' ? record.place : record.place?.en || '';
+        const placeText = placeEs || placeEn || '';
+        const placeNorm = normalizeText(placeText);
+        const placeCompact = placeNorm.replace(/\s+/g, '');
+        const placeNorms = [placeEs, placeEn]
+          .map((value) => normalizeText(value))
+          .filter((value, index, arr) => value.length > 0 && arr.indexOf(value) === index);
+        const placeCompacts = placeNorms.map((value) => value.replace(/\s+/g, ''));
+        
+        const augmentedRecord = {
+          ...record,
+          cityNorm,
+          placeNorm,
+          placeCompact,
+          placeNorms,
+          placeCompacts
+        };
+        
+        db.records.push(augmentedRecord);
+        
+        if (!db.byCity[cityNorm]) {
+          db.byCity[cityNorm] = [];
+        }
+        db.byCity[cityNorm].push(augmentedRecord);
+        
+        if (!cityNorms.has(cityNorm)) {
+          db.cityNameByNorm[cityNorm] = record.city;
+          cityNorms.add(cityNorm);
+        }
+      });
+      
+      return db;
+    };
+
+    if (!destinationDb && !isFileProtocol) {
+      fetch('destinations.database.json')
+        .then(res => {
+          if (!res.ok) {
+            throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+          }
+          return res.json();
+        })
+        .then(data => {
+          destinationDb = buildDatabaseFromJson(data);
+          applyPersistedEditorState();
+          console.log('✅ JSON Database loaded:', destinationDb.records.length, 'records with bilingual content');
+          applyMainPageLanguage();
+          
+          // Render detail view immediately if we're viewing a day
+          if (selectedDay) {
+            console.log('Rendering detail view now that JSON database is loaded...');
+            doRenderDetailView();
+          }
+        })
+        .catch(err => {
+          console.warn('⚠️ Could not load JSON database:', err.message);
+          console.log('Will use embedded data as fallback...');
+        });
+    } else if (!destinationDb && isFileProtocol) {
+      console.log('ℹ️ Running from file://, skipping JSON fetch to avoid CORS restrictions.');
+    } else {
+      console.log('✅ Using embedded destination database:', destinationDb.records?.length || 0, 'records');
+      applyPersistedEditorState();
+
+      // In exported locked files, DB is already available at startup.
+      // Defer detail render until the rest of the script initializes all constants/functions.
+      setTimeout(() => {
+        applyMainPageLanguage();
+        if (selectedDay) {
+          refreshNavButtons();
+          doRenderDetailView();
+        }
+      }, 0);
+    }
+
+    // Extracts city names from a tag like "Dia 3 · Londres y Paris".
+    const getCitiesFromTag = (tag) => {
+      const match = String(tag || '').match(/·\s*(.+)$/);
+      if (!match) {
+        return [];
+      }
+
+      const rawCityText = match[1].trim();
+      if (!rawCityText) {
+        return [];
+      }
+
+      const candidates = rawCityText
+        .split(/\s*(?:,|\/|\||\+|&|\by\b|\be\b|\band\b)\s*/i)
+        .map((part) => part.trim())
+        .filter((part) => part.length > 0);
+
+      const deduped = [];
+      const seen = new Set();
+      candidates.forEach((city) => {
+        const normalized = normalizeText(city);
+        if (!normalized || seen.has(normalized)) {
+          return;
+        }
+        seen.add(normalized);
+        deduped.push(city);
+      });
+
+      return deduped;
+    };
+
+
+    // Language management - use event delegation for all .lang-btn buttons
+    let currentLanguage = lockedLanguage || localStorage.getItem('itineraryLanguage') || 'es';
+
+    if (hideLanguageSelectors) {
+      document.querySelectorAll('.language-selector').forEach((selector) => {
+        selector.style.display = 'none';
+      });
+    }
+
+    const setLanguage = (lang) => {
+      if (isLanguageLocked) {
+        currentLanguage = lockedLanguage;
+        return;
+      }
+
+      currentLanguage = lang;
+      localStorage.setItem('itineraryLanguage', lang);
+      console.log('✓ Language changed to:', lang, '| Database loaded:', !!destinationDb);
+      // Update all language buttons everywhere on page
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        btn.classList.toggle('lang-btn-active', btn.dataset.lang === lang);
+      });
+      
+      applyMainPageLanguage();
+      
+      // Update editor language if panel is open
+      if (editorPanel?.classList.contains('open')) {
+        updateEditorLanguage(lang);
+        populateDaysList();
+        // Refresh the current tab based on what's being viewed
+        if (document.getElementById('destinationsByCity').style.display !== 'none' && currentEditingCity) {
+          // Refresh city destinations view
+          viewCityDestinations(currentEditingCity);
+        } else {
+          // Refresh cities list
+          populateDestinationsList();
+        }
+      }
+      
+      // Re-render if in detail view
+      if (selectedDay) {
+        console.log('Re-rendering detail view for day', selectedDay, 'with language:', lang);
+        refreshNavButtons();
+        doRenderDetailView();
+      } else {
+        console.log('Not in detail view yet (selectedDay =', selectedDay + ')');
+      }
+    };
+
+    // Event delegation: listen for clicks on any .lang-btn
+    document.addEventListener('click', (e) => {
+      if (isLanguageLocked) {
+        return;
+      }
+
+      if (e.target.classList.contains('lang-btn') && e.target.dataset.lang) {
+        setLanguage(e.target.dataset.lang);
+      }
+    });
+
+    const exportLockedHtml = () => {
+      const langToLock = currentLanguage === 'en' ? 'en' : 'es';
+      const embeddedDb = destinationDb || null;
+      const hideMainLogoOnExport = hideMainLogo ? '1' : '0';
+      const embeddedDbJsonText = JSON.stringify(embeddedDb || {})
+        .replace(/</g, '\\u003c')
+        .replace(/>/g, '\\u003e');
+      const exportBootstrap = `<script>window.__LOCKED_LANGUAGE='${langToLock}';window.__HIDE_LANGUAGE_SELECTOR=true;window.__HIDE_MAIN_LOGO=${hideMainLogo ? 'true' : 'false'};<\/script>`;
+      const exportEmbeddedDbJson = `<script id="__embeddedDbJson" type="application/json">${embeddedDbJsonText}<\/script>`;
+      const exportLockedCss = `<style id="__lockedLanguageCss">.language-selector{display:none !important;}<\/style>`;
+
+      let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      html = html.replace('<html', `<html data-locked-language="${langToLock}" data-hide-language-selector="1" data-hide-main-logo="${hideMainLogoOnExport}"`);
+      html = html.replace('</head>', `  ${exportBootstrap}\n  ${exportEmbeddedDbJson}\n  ${exportLockedCss}\n</head>`);
+
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const langLabel = langToLock === 'en' ? 'english' : 'spanish';
+      link.href = url;
+      link.download = `itinerario-bloqueado-${langLabel}.html`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    };
+
+    const exportEditableHtml = () => {
+      const hideMainLogoOnExport = hideMainLogo ? '1' : '0';
+      const embeddedDb = destinationDb || null;
+      const destinationSnapshot = getDestinationArray().map((record) => ({
+        city: record?.city || '',
+        place: record?.place || '',
+        description: record?.description || '',
+        image: record?.image || ''
+      }));
+      const editableState = {
+        version: 1,
+        days: collectDaysState(),
+        destinations: destinationSnapshot,
+        mainPage: collectMainPageState(),
+        branding: collectBrandingState()
+      };
+
+      const embeddedDbJsonText = JSON.stringify(embeddedDb || {})
+        .replace(/</g, '\\u003c')
+        .replace(/>/g, '\\u003e');
+      const editableStateJsonText = JSON.stringify(editableState || {})
+        .replace(/</g, '\\u003c')
+        .replace(/>/g, '\\u003e');
+
+      const editableBootstrap = `<script>window.__HIDE_MAIN_LOGO=${hideMainLogo ? 'true' : 'false'};<\/script>`;
+      const exportEmbeddedDbJson = `<script id="__embeddedDbJson" type="application/json">${embeddedDbJsonText}<\/script>`;
+      const exportStateJson = `<script id="__editableStateJson" type="application/json">${editableStateJsonText}<\/script>`;
+      const storageBootstrap = `<script>(function(){try{var node=document.getElementById('__editableStateJson');if(!node||!node.textContent)return;var raw=node.textContent;localStorage.setItem('itineraryEditorStateV1',raw);sessionStorage.setItem('itineraryEditorStateV1Session',raw);window.name='__ITINERARY_EDITOR_STATE__='+raw;}catch(e){}})();<\/script>`;
+
+      let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+      html = html.replace('<html', `<html data-hide-main-logo="${hideMainLogoOnExport}"`);
+      html = html.replace('</head>', `  ${editableBootstrap}\n  ${exportEmbeddedDbJson}\n  ${exportStateJson}\n  ${storageBootstrap}\n</head>`);
+
+      const blob = new Blob([html], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const dateStamp = new Date().toISOString().replace(/[:T]/g, '-').slice(0, 16);
+      link.href = url;
+      link.download = `itinerario-editable-${dateStamp}.html`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+    };
+
+    if (exportLockedHtmlBtn) {
+      exportLockedHtmlBtn.addEventListener('click', exportLockedHtml);
+    }
+
+    if (exportEditableHtmlBtn) {
+      exportEditableHtmlBtn.addEventListener('click', exportEditableHtml);
+    }
+
+    // Initialize language buttons state on page load
+    setTimeout(() => {
+      document.querySelectorAll('.lang-btn').forEach((btn) => {
+        if (btn.dataset.lang === currentLanguage) {
+          btn.classList.add('lang-btn-active');
+        } else {
+          btn.classList.remove('lang-btn-active');
+        }
+      });
+      applyMainPageLanguage();
+    }, 0);
+
+    // Helper to extract text in current language
+    const getLangText = (item) => {
+      if (typeof item === 'string') return item;
+      if (item && typeof item === 'object') return item[currentLanguage] || item.es || item.en || '';
+      return '';
+    };
+
+    // Render detail view with current language
+    const doRenderDetailView = () => {
+      if (!selectedDay) {
+        console.warn('doRenderDetailView called but no selectedDay set');
+        return;
+      }
+
+      const dbReady = Boolean(destinationDb);
+      if (!dbReady) {
+        console.warn('ℹ️ destinationDb not ready yet, rendering day detail with card data only.');
+      }
+
+      console.log('Rendering detail view for day', selectedDay, 'in language:', currentLanguage);
+      console.log('Database ready:', dbReady, '| records:', dbReady ? (destinationDb.records?.length || 0) : 0);
+
+      let selectedCard = null;
+
+      dayCards.forEach((card) => {
+        if (getDayNumberFromCard(card) === selectedDay) {
+          selectedCard = card;
+        }
+      });
+
+      if (!selectedCard || !detailView) return;
+      document.body.classList.add('detail-mode');
+
+      const sectionsToHide = document.querySelectorAll('.hero, .section:not(#detailView)');
+      sectionsToHide.forEach((element) => {
+        element.style.display = 'none';
+      });
+
+      const tagElement = selectedCard.querySelector('.tag');
+      const sourceTag = tagElement?.dataset.esText || tagElement?.textContent || `Dia ${selectedDay}`;
+      const tag = tagElement?.textContent || sourceTag;
+      const title = selectedCard.querySelector('h3')?.textContent || 'Detalle del dia';
+      const places = selectedCard.querySelector('.places')?.textContent || '';
+      const note = selectedCard.querySelector('.note')?.textContent || '';
+      const imageStyle = selectedCard.querySelector('.day-image')?.style.backgroundImage || '';
+      const cities = getCitiesFromTag(sourceTag);
+
+      // Translate tag: replace "Dia" with "Day" if needed, keep city name
+      const tagParts = tag.split('·');
+      const dayNumberText = tagParts[0]?.trim().replace(/(?:Dia|Día|Day)\s*/i, '') || String(selectedDay);
+      const translatedTag = tagParts.length > 1 
+        ? `${translateUiText('Dia')} ${dayNumberText} · ${translateCityNames(tagParts[1].trim())}`
+        : tag;
+
+      const detailTag = document.getElementById('detailTag');
+      const detailTitle = document.getElementById('detailTitle');
+      const detailPlaces = document.getElementById('detailPlaces');
+      const detailNote = document.getElementById('detailNote');
+      const detailImage = document.getElementById('detailImage');
+      const destinationGrid = document.getElementById('destinationGrid');
+
+      const destinations = places
+        .split(',')
+        .map((item) => item.trim())
+        .filter((item) => item.length > 0);
+
+      if (destinationGrid) {
+        destinationGrid.innerHTML = '';
+
+        destinations.forEach((destination, index) => {
+          const card = document.createElement('article');
+          card.className = 'destination-card';
+
+          const thumb = document.createElement('div');
+          thumb.className = 'destination-thumb';
+
+          const destinationRecord = dbReady ? findDestinationRecord(destinationDb, cities, destination) : null;
+          const thumbImage = destinationRecord?.image || '';
+          const fallbackBackground = toCssBackgroundImage(imageStyle);
+
+          if (fallbackBackground) {
+            thumb.style.backgroundImage = fallbackBackground;
+          }
+
+          if (thumbImage) {
+            const probe = new Image();
+            probe.onload = () => {
+              const loadedBackground = toCssBackgroundImage(thumbImage);
+              if (loadedBackground) {
+                thumb.style.backgroundImage = loadedBackground;
+              }
+            };
+            probe.onerror = () => {
+              if (fallbackBackground) {
+                thumb.style.backgroundImage = fallbackBackground;
+              }
+            };
+            probe.referrerPolicy = 'no-referrer';
+            probe.src = thumbImage;
+          }
+
+          const placeLangText = getLangText(destinationRecord?.place || destination);
+          const descriptionLangText = getLangText(destinationRecord?.description)
+            || `Parada recomendada para conocer mejor ${placeLangText} y su valor cultural dentro del recorrido.`;
+
+          if (index === 0) {
+            console.log(`  Destination "${destination}" -> Record found:`, !!destinationRecord, '| Place text:', placeLangText, '| Has description:', !!destinationRecord?.description);
+          }
+
+          const stop = document.createElement('strong');
+          stop.textContent = `Parada ${index + 1}`;
+
+          const placeName = document.createElement('p');
+          placeName.textContent = placeLangText;
+
+          const copy = document.createElement('p');
+          copy.className = 'destination-copy';
+          copy.textContent = descriptionLangText;
+
+          card.appendChild(thumb);
+          card.appendChild(stop);
+          card.appendChild(placeName);
+          card.appendChild(copy);
+          destinationGrid.appendChild(card);
+        });
+      }
+
+      if (detailTag) detailTag.textContent = translatedTag;
+      if (detailTitle) detailTitle.textContent = translateUiText(title);
+      if (detailPlaces) detailPlaces.textContent = places;
+      if (detailNote) detailNote.textContent = note;
+      if (detailImage) detailImage.style.backgroundImage = imageStyle;
+
+      refreshNavButtons();
+
+      document.title = `${title} | Itinerario`;
+      detailView.style.display = 'block';
+      window.scrollTo(0, 0);
+    };
+    const findDestinationRecord = (db, cities, place) => {
+      const normalizedCities = Array.isArray(cities)
+        ? cities.map((city) => normalizeText(city)).filter((city) => city.length > 0)
+        : [];
+      const normalizedPlace = normalizeText(place);
+      const compactPlace = normalizedPlace.replace(/\s+/g, '');
+
+      const searchInRecords = (records) => {
+        if (!Array.isArray(records) || records.length === 0) {
+          return null;
+        }
+
+        // Try exact match on place field (string)
+        for (const record of records) {
+          if (record.place === place) return record;
+        }
+
+        // Try exact match on bilingual place names
+        for (const record of records) {
+          const placeEs = typeof record.place === 'string' ? record.place : record.place?.es || '';
+          const placeEn = typeof record.place === 'string' ? record.place : record.place?.en || '';
+          if (placeEs === place || placeEn === place) return record;
+        }
+
+        // Try normalized match
+        for (const record of records) {
+          if (record.placeNorm === normalizedPlace) return record;
+          if (Array.isArray(record.placeNorms) && record.placeNorms.includes(normalizedPlace)) return record;
+        }
+
+        // Try partial/compact match
+        for (const record of records) {
+          const normCandidates = Array.isArray(record.placeNorms) && record.placeNorms.length > 0
+            ? record.placeNorms
+            : [record.placeNorm];
+          const compactCandidates = Array.isArray(record.placeCompacts) && record.placeCompacts.length > 0
+            ? record.placeCompacts
+            : [record.placeCompact];
+
+          const normHit = normCandidates.some((candidate) =>
+            normalizedPlace.includes(candidate) || candidate.includes(normalizedPlace)
+          );
+          const compactHit = compactCandidates.some((candidate) =>
+            compactPlace.includes(candidate) || candidate.includes(compactPlace)
+          );
+
+          if (
+            normHit ||
+            compactHit
+          ) {
+            return record;
+          }
+        }
+
+        return null;
+      };
+
+      for (const cityNorm of normalizedCities) {
+        const cityRecord = searchInRecords(db.byCity[cityNorm]);
+        if (cityRecord) {
+          return cityRecord;
+        }
+      }
+
+      const excluded = new Set(normalizedCities);
+      const fallbackRecords = db.records.filter((record) => !excluded.has(record.cityNorm));
+      return searchInRecords(fallbackRecords);
+    };
+
+    const toCssBackgroundImage = (value) => {
+      const raw = String(value || '').trim();
+      if (!raw) {
+        return '';
+      }
+
+      if (/^url\(/i.test(raw)) {
+        return raw;
+      }
+
+      const safeUrl = raw.replace(/'/g, "\\'");
+      return `url('${safeUrl}')`;
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const selectedDay = Number(params.get('day'));
+    const prevDayBtn = document.getElementById('prevDayBtn');
+    const nextDayBtn = document.getElementById('nextDayBtn');
+    const getMaxDay = () => {
+      refreshDayCards();
+      return dayCards.length;
+    };
+
+    if (backToItinerary) {
+      const cleanUrl = new URL(window.location.href);
+      cleanUrl.searchParams.delete('day');
+      backToItinerary.href = cleanUrl.toString();
+    }
+
+    const buildDayUrl = (dayNumber) => {
+      try {
+        const nextUrl = new URL(window.location.href);
+        nextUrl.searchParams.set('day', dayNumber);
+        return nextUrl.toString();
+      } catch (error) {
+        const base = String(window.location.href || '')
+          .split('#')[0]
+          .split('?')[0];
+        return `${base}?day=${encodeURIComponent(dayNumber)}`;
+      }
+    };
+
+    const updateNavButtonState = (button, targetDay, isDisabled) => {
+      if (!button) {
+        return;
+      }
+
+      const isPrevButton = button.id === 'prevDayBtn';
+      const defaultText = isPrevButton
+        ? translateUiText('Anterior')
+        : translateUiText('Siguiente');
+      const dayToken = translateUiText('Dia');
+
+      if (isDisabled) {
+        button.href = '#';
+        button.textContent = defaultText;
+        button.classList.add('is-disabled');
+        button.setAttribute('aria-disabled', 'true');
+        button.setAttribute('aria-label', `${defaultText} no disponible`);
+      } else {
+        button.href = buildDayUrl(targetDay);
+        button.textContent = `${defaultText}: ${dayToken} ${targetDay}`;
+        button.classList.remove('is-disabled');
+        button.removeAttribute('aria-disabled');
+        button.setAttribute('aria-label', `${defaultText}: ${dayToken} ${targetDay}`);
+      }
+    };
+
+    const refreshNavButtons = () => {
+      if (!Number.isFinite(selectedDay) || selectedDay <= 0) {
+        return;
+      }
+
+      const maxDay = getMaxDay();
+      updateNavButtonState(prevDayBtn, selectedDay - 1, selectedDay <= 1);
+      updateNavButtonState(nextDayBtn, selectedDay + 1, selectedDay >= maxDay);
+    };
+
+    const getDayNumberFromCard = (card) => {
+      const dataDay = Number(card.dataset.day);
+      if (Number.isFinite(dataDay) && dataDay > 0) {
+        return dataDay;
+      }
+
+      const tagText = card.querySelector('.tag')?.textContent || '';
+      const match = tagText.match(/(?:Dia|Día|Day)\s+(\d+)/i);
+      if (match) {
+        return Number(match[1]);
+      }
+
+      return null;
+    };
+
+    const openSamePageWithDay = (dayNumber) => {
+      const target = buildDayUrl(dayNumber);
+      try {
+        window.location.assign(target);
+      } catch (error) {
+        window.location.href = target;
+      }
+    };
+
+    const bindDayCardInteractions = (card, indexHint = 0) => {
+      if (!card || card.dataset.detailBound === '1') return;
+
+      const initialDayNumber = getDayNumberFromCard(card) || (indexHint + 1);
+      card.dataset.day = String(initialDayNumber);
+
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'link');
+      card.setAttribute('aria-label', `Ver detalle del dia ${initialDayNumber}`);
+
+      const goToDetail = () => {
+        refreshDayCards();
+        const currentIndex = dayCards.indexOf(card);
+        const dayNumber = currentIndex >= 0 ? (currentIndex + 1) : initialDayNumber;
+        openSamePageWithDay(dayNumber);
+      };
+
+      card.addEventListener('click', goToDetail);
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          goToDetail();
+        }
+      });
+
+      card.dataset.detailBound = '1';
+    };
+
+    refreshDayCards();
+    dayCards.forEach((card, index) => bindDayCardInteractions(card, index));
+
+    // Fallback delegation: if a card was dynamically rendered without direct listeners,
+    // this keeps day navigation working from the itinerary grid.
+    const daysContainerForNav = getDaysContainer();
+    if (daysContainerForNav) {
+      daysContainerForNav.addEventListener('click', (event) => {
+        const card = event.target?.closest?.('.day-card');
+        if (!card) return;
+        if (card.dataset.detailBound === '1') return;
+
+        refreshDayCards();
+        const cardIndex = dayCards.indexOf(card);
+        if (cardIndex < 0) return;
+        openSamePageWithDay(cardIndex + 1);
+      });
+    }
+
+    if (selectedDay) {
+      // Keep nav links accurate immediately and always trigger a render attempt.
+      // doRenderDetailView handles DB-not-ready by retrying.
+      refreshNavButtons();
+      setTimeout(() => doRenderDetailView(), 0);
+    }
+
+    // Helper function to get destinationDb as an array
+    const getDestinationArray = () => {
+      if (Array.isArray(destinationDb)) {
+        return destinationDb;
+      } else if (destinationDb?.records && Array.isArray(destinationDb.records)) {
+        return destinationDb.records;
+      } else if (typeof destinationDb === 'object' && destinationDb !== null) {
+        return Object.values(destinationDb);
+      }
+      return [];
+    };
+
+    // ===== EDITOR FUNCTIONALITY =====
+    const editorPanel = document.getElementById('editorPanel');
+    const toggleEditorBtn = document.getElementById('toggleEditorBtn');
+    const closeEditorBtn = document.getElementById('closeEditorBtn');
+    const dayEditModal = document.getElementById('dayEditModal');
+    const destinationEditModal = document.getElementById('destinationEditModal');
+    let currentEditingDay = null;
+    let currentEditingDestination = null;
+    let currentEditingCity = null;
+
+    const mainPageEditableFields = [
+      { id: 'heroMainTitle', labelEs: 'Título Principal', labelEn: 'Main Title' },
+      { id: 'heroMainIntro', labelEs: 'Introducción Principal', labelEn: 'Main Introduction' },
+      { id: 'presentationTitle', labelEs: 'Título de Presentación', labelEn: 'Presentation Title' },
+      { id: 'presentationLead', labelEs: 'Texto de Presentación', labelEn: 'Presentation Text' },
+      { id: 'highlight1Title', labelEs: 'Bloque 1: Título', labelEn: 'Block 1: Title' },
+      { id: 'highlight1Desc', labelEs: 'Bloque 1: Descripción', labelEn: 'Block 1: Description' },
+      { id: 'highlight2Title', labelEs: 'Bloque 2: Título', labelEn: 'Block 2: Title' },
+      { id: 'highlight2Desc', labelEs: 'Bloque 2: Descripción', labelEn: 'Block 2: Description' },
+      { id: 'highlight3Title', labelEs: 'Bloque 3: Título', labelEn: 'Block 3: Title' },
+      { id: 'highlight3Desc', labelEs: 'Bloque 3: Descripción', labelEn: 'Block 3: Description' },
+      { id: 'itineraryTitle', labelEs: 'Título de Itinerario', labelEn: 'Itinerary Title' },
+      { id: 'itineraryLead', labelEs: 'Texto de Itinerario', labelEn: 'Itinerary Text' },
+      { id: 'servicesTitle', labelEs: 'Título de Servicios', labelEn: 'Services Title' },
+      { id: 'servicesP1', labelEs: 'Servicios: Párrafo 1', labelEn: 'Services: Paragraph 1' },
+      { id: 'servicesP2', labelEs: 'Servicios: Párrafo 2', labelEn: 'Services: Paragraph 2' },
+      { id: 'servicesP3', labelEs: 'Servicios: Párrafo 3', labelEn: 'Services: Paragraph 3' }
+    ];
+
+    const escapeHtmlAttr = (value) => String(value || '')
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+
+    const getBrandingEditorLabels = () => ({
+      browserTitle: currentLanguage === 'es' ? 'Título de la pestaña' : 'Browser Title',
+      logoUrl: currentLanguage === 'es' ? 'URL del logo' : 'Logo URL',
+      hideLogo: currentLanguage === 'es' ? 'Ocultar logo' : 'Hide logo'
+    });
+
+    const populateMainPageEditor = () => {
+      const container = document.getElementById('mainPageEditorForm');
+      if (!container) return;
+
+      container.innerHTML = '';
+
+      const brandingLabels = getBrandingEditorLabels();
+      const brandingGroup = document.createElement('div');
+      brandingGroup.className = 'form-group';
+      brandingGroup.innerHTML = `
+        <label>${brandingLabels.browserTitle}</label>
+        <input id="editBrowserTitle" type="text" value="${escapeHtmlAttr(document.title)}">
+        <label style="margin-top: 12px;">${brandingLabels.logoUrl}</label>
+        <input id="editLogoUrl" type="text" value="${escapeHtmlAttr(heroLogoImage?.getAttribute('src') || '')}">
+        <label style="display: flex; align-items: center; gap: 8px; margin-top: 12px; font-weight: 600;">
+          <input id="editHideLogo" type="checkbox" ${hideMainLogo ? 'checked' : ''}>
+          <span>${brandingLabels.hideLogo}</span>
+        </label>
+      `;
+      container.appendChild(brandingGroup);
+
+      mainPageEditableFields.forEach((field) => {
+        const element = document.getElementById(field.id);
+        if (!element) return;
+
+        const esValue = element.dataset.esText || element.textContent.trim();
+        const enValue = (element.dataset.enText && element.dataset.enText.trim().length > 0)
+          ? element.dataset.enText
+          : translateCityNamesToLang(translateUiTextToLang(esValue, 'en'), 'en');
+        element.dataset.esText = esValue;
+
+        const group = document.createElement('div');
+        group.className = 'form-group';
+        group.innerHTML = `
+          <label data-edit-lang="es">${field.labelEs}</label>
+          <textarea data-edit-lang="es" data-main-field="${field.id}" data-main-lang="es">${esValue}</textarea>
+          <label data-edit-lang="en">${field.labelEn}</label>
+          <textarea data-edit-lang="en" data-main-field="${field.id}" data-main-lang="en">${enValue}</textarea>
+        `;
+        container.appendChild(group);
+      });
+
+      applyEditorLanguageVisibility(container);
+    };
+
+    console.log('🔧 Editor initialization...');
+    console.log('toggleEditorBtn found:', toggleEditorBtn ? '✅ Yes' : '❌ No');
+    console.log('editorPanel found:', editorPanel ? '✅ Yes' : '❌ No');
+    console.log('dayCards found:', dayCards?.length || 0);
+
+    const updateDaysTabCount = (lang = currentLanguage) => {
+      refreshDayCards();
+      const count = dayCards.length;
+      const daysTabBtn = document.querySelector('.editor-tab-btn[data-tab="days"]');
+      if (!daysTabBtn) return;
+
+      daysTabBtn.dataset.labelEs = `Días (${count})`;
+      daysTabBtn.dataset.labelEn = `Days (${count})`;
+      daysTabBtn.textContent = lang === 'es' ? daysTabBtn.dataset.labelEs : daysTabBtn.dataset.labelEn;
+    };
+
+    // Editor translation system
+    const updateEditorLanguage = (lang) => {
+      updateDaysTabCount(lang);
+      document.querySelectorAll('[data-label-es][data-label-en]').forEach(elem => {
+        if (elem.id !== 'editorTitle') { // Don't translate the title via data attributes
+          elem.textContent = lang === 'es' ? elem.dataset.labelEs : elem.dataset.labelEn;
+        }
+      });
+      document.getElementById('editorTitle').textContent = lang === 'es' ? '✎ Editor de Itinerario' : '✎ Itinerary Editor';
+    };
+
+    const applyEditorLanguageVisibility = (scope = document) => {
+      scope.querySelectorAll('[data-edit-lang]').forEach((group) => {
+        group.style.display = group.dataset.editLang === currentLanguage ? '' : 'none';
+      });
+    };
+
+    // Toggle editor panel
+    toggleEditorBtn?.addEventListener('click', () => {
+      console.log('✎ Editor button clicked');
+      console.log('editorPanel:', editorPanel);
+      console.log('editorPanel classList before:', editorPanel?.className);
+      editorPanel.classList.toggle('open');
+      console.log('editorPanel classList after:', editorPanel?.className);
+      if (editorPanel.classList.contains('open')) {
+        console.log('📋 Populating days list...');
+        updateEditorLanguage(currentLanguage);
+        applyEditorLanguageVisibility(document);
+        populateDaysList();
+        console.log('📍 Populating destinations list...');
+        populateDestinationsList();
+      }
+    });
+
+    closeEditorBtn?.addEventListener('click', () => {
+      editorPanel.classList.remove('open');
+    });
+
+    // Close day modal
+    document.querySelectorAll('.closeDayModal').forEach(btn => {
+      btn.addEventListener('click', () => {
+        dayEditModal.classList.remove('show');
+      });
+    });
+
+    // Close destination modal
+    document.querySelectorAll('.closeDestinationModal').forEach(btn => {
+      btn.addEventListener('click', () => {
+        destinationEditModal.classList.remove('show');
+      });
+    });
+
+    // Tab switching
+    document.querySelectorAll('.editor-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const tabName = btn.dataset.tab;
+        document.querySelectorAll('.editor-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.editor-tab-content').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById(tabName + 'Tab').classList.add('active');
+        
+        // Populate destinations tab when clicked
+        if (tabName === 'destinations') {
+          console.log('📂 Destinations tab clicked - populating...');
+          populateDestinationsList();
+        } else if (tabName === 'main') {
+          console.log('📝 Main page tab clicked - populating...');
+          populateMainPageEditor();
+        }
+
+        applyEditorLanguageVisibility(document);
+      });
+    });
+
+    document.getElementById('saveMainPageBtn')?.addEventListener('click', () => {
+      const browserTitleInput = document.getElementById('editBrowserTitle');
+      const logoUrlInput = document.getElementById('editLogoUrl');
+      const hideLogoInput = document.getElementById('editHideLogo');
+
+      if (browserTitleInput && browserTitleInput.value.trim()) {
+        document.title = browserTitleInput.value.trim();
+      }
+
+      if (heroLogoImage && logoUrlInput) {
+        heroLogoImage.setAttribute('src', logoUrlInput.value.trim());
+      }
+
+      if (hideLogoInput) {
+        hideMainLogo = hideLogoInput.checked;
+      }
+
+      applyHeroBranding();
+
+      document.querySelectorAll('#mainPageEditorForm textarea[data-main-field][data-main-lang]').forEach((input) => {
+        const fieldId = input.dataset.mainField;
+        const lang = input.dataset.mainLang;
+        const element = document.getElementById(fieldId);
+        if (!element || !fieldId || !lang) return;
+
+        const value = input.value.trim();
+        if (lang === 'es') {
+          element.dataset.esText = value;
+        } else {
+          element.dataset.enText = value.length > 0
+            ? value
+            : translateCityNamesToLang(translateUiTextToLang(element.dataset.esText || '', 'en'), 'en');
+        }
+      });
+
+      applyMainPageLanguage();
+      saveEditorState();
+      alert(currentLanguage === 'es' ? '✅ Página principal actualizada' : '✅ Main page updated');
+    });
+
+    // DAYS EDITOR
+    const populateDaysList = () => {
+      updateDaysTabCount(currentLanguage);
+      const daysList = document.getElementById('daysList');
+      daysList.innerHTML = '';
+      const lang = currentLanguage;
+      
+      dayCards.forEach((card, index) => {
+        const dayNum = index + 1;
+        const title = card.querySelector('h3')?.textContent || '';
+        const tag = card.querySelector('.tag')?.textContent || '';
+        
+        const item = document.createElement('div');
+        item.className = 'editor-item';
+        item.innerHTML = `
+          <div class="editor-item-title">
+            <strong>${lang === 'es' ? `Día ${dayNum}` : `Day ${dayNum}`}</strong><br>
+            <small style="color: #666;">${title}</small>
+          </div>
+          <div class="editor-item-actions">
+            <button class="editor-item-btn" onclick="editDay(${dayNum})">${lang === 'es' ? 'Editar' : 'Edit'}</button>
+          </div>
+        `;
+        daysList.appendChild(item);
+      });
+    };
+
+    const autoFillMissingDayTranslations = async () => {
+      const tagEsEl = document.getElementById('editDayTagEs');
+      const tagEnEl = document.getElementById('editDayTagEn');
+      const titleEsEl = document.getElementById('editDayTitleEs');
+      const titleEnEl = document.getElementById('editDayTitleEn');
+      const placesEsEl = document.getElementById('editDayPlacesEs');
+      const placesEnEl = document.getElementById('editDayPlacesEn');
+      const noteEsEl = document.getElementById('editDayNoteEs');
+      const noteEnEl = document.getElementById('editDayNoteEn');
+
+      if (!tagEsEl || !tagEnEl || !titleEsEl || !titleEnEl || !placesEsEl || !placesEnEl || !noteEsEl || !noteEnEl) {
+        return;
+      }
+
+      if (!tagEnEl.value.trim() && tagEsEl.value.trim()) {
+        tagEnEl.value = await translateTextWithApi(tagEsEl.value, 'es', 'en');
+      } else if (!tagEsEl.value.trim() && tagEnEl.value.trim()) {
+        tagEsEl.value = await translateTextWithApi(tagEnEl.value, 'en', 'es');
+      }
+
+      if (!titleEnEl.value.trim() && titleEsEl.value.trim()) {
+        titleEnEl.value = await translateTextWithApi(titleEsEl.value, 'es', 'en');
+      } else if (!titleEsEl.value.trim() && titleEnEl.value.trim()) {
+        titleEsEl.value = await translateTextWithApi(titleEnEl.value, 'en', 'es');
+      }
+
+      if (!placesEnEl.value.trim() && placesEsEl.value.trim()) {
+        placesEnEl.value = await translatePlacesList(placesEsEl.value, 'es', 'en');
+      } else if (!placesEsEl.value.trim() && placesEnEl.value.trim()) {
+        placesEsEl.value = await translatePlacesList(placesEnEl.value, 'en', 'es');
+      }
+
+      if (!noteEnEl.value.trim() && noteEsEl.value.trim()) {
+        noteEnEl.value = await translateTextWithApi(noteEsEl.value, 'es', 'en');
+      } else if (!noteEsEl.value.trim() && noteEnEl.value.trim()) {
+        noteEsEl.value = await translateTextWithApi(noteEnEl.value, 'en', 'es');
+      }
+    };
+
+    window.editDay = (dayNum) => {
+      currentEditingDay = dayNum;
+      const card = dayCards[dayNum - 1];
+      if (!card) return;
+
+      const tagVisible = card.querySelector('.tag')?.textContent || '';
+      const titleVisible = card.querySelector('h3')?.textContent || '';
+      const placesVisible = card.querySelector('.places')?.textContent || '';
+      const noteVisible = card.querySelector('.note')?.textContent || '';
+
+      const tagEs = card.querySelector('.tag')?.dataset?.esText || (currentLanguage === 'es' ? tagVisible : '');
+      const tagEn = card.querySelector('.tag')?.dataset?.enText || (currentLanguage === 'en' ? tagVisible : '');
+      const extractCityText = (tagText) => {
+        const parsed = getCitiesFromTag(tagText);
+        if (parsed.length > 0) return parsed.join(', ');
+        const match = String(tagText || '').match(/·\s*(.+)$/);
+        return match ? match[1].trim() : '';
+      };
+      const cityEs = extractCityText(tagEs);
+      const cityEn = extractCityText(tagEn);
+      const titleEs = card.querySelector('h3')?.dataset?.esText || (currentLanguage === 'es' ? titleVisible : '');
+      const titleEn = card.querySelector('h3')?.dataset?.enText || (currentLanguage === 'en' ? titleVisible : '');
+      const placesEs = card.querySelector('.places')?.dataset?.esText || (currentLanguage === 'es' ? placesVisible : '');
+      const placesEn = card.querySelector('.places')?.dataset?.enText || (currentLanguage === 'en' ? placesVisible : '');
+      const noteEs = card.querySelector('.note')?.dataset?.esText || (currentLanguage === 'es' ? noteVisible : '');
+      const noteEn = card.querySelector('.note')?.dataset?.enText || (currentLanguage === 'en' ? noteVisible : '');
+      const imageUrl = card.querySelector('.day-image')?.style.backgroundImage?.match(/url\(['"]?(.*?)['"]?\)/)?.[1] || '';
+
+      const form = document.getElementById('dayEditForm');
+      form.innerHTML = `
+        <div class="form-group" data-edit-lang="es">
+          <label>Ciudad(es) visitada(s) (Español)</label>
+          <input type="text" id="editDayTagEs" value="${cityEs}" placeholder="Londres, París">
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>City/Cities visited (English)</label>
+          <input type="text" id="editDayTagEn" value="${cityEn}" placeholder="London, Paris">
+        </div>
+        <div class="form-group" data-edit-lang="es">
+          <label>Título (Español)</label>
+          <input type="text" id="editDayTitleEs" value="${titleEs}" placeholder="Título del día">
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>Título (English)</label>
+          <input type="text" id="editDayTitleEn" value="${titleEn}" placeholder="Day title">
+        </div>
+        <div class="form-group" data-edit-lang="es">
+          <label>Lugares (Español, separados por coma)</label>
+          <textarea id="editDayPlacesEs" placeholder="Lugar1, Lugar2, Lugar3">${placesEs}</textarea>
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>Places (English, comma separated)</label>
+          <textarea id="editDayPlacesEn" placeholder="Place1, Place2, Place3">${placesEn}</textarea>
+        </div>
+        <div class="form-group" data-edit-lang="es">
+          <label>Nota/Descripción (Español)</label>
+          <textarea id="editDayNoteEs">${noteEs}</textarea>
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>Note/Description (English)</label>
+          <textarea id="editDayNoteEn">${noteEn}</textarea>
+        </div>
+        <div class="form-group">
+          <label>URL de Imagen</label>
+          <input type="text" id="editDayImage" value="${imageUrl}" placeholder="https://...">
+        </div>
+      `;
+
+      applyEditorLanguageVisibility(form);
+
+      document.getElementById('dayEditTitle').textContent = `Editar Día ${dayNum}`;
+      document.getElementById('deleteDayBtn').style.display = '';
+      dayEditModal.classList.add('show');
+      setTimeout(() => {
+        autoFillMissingDayTranslations();
+      }, 0);
+    };
+
+    document.getElementById('saveDayBtn')?.addEventListener('click', async () => {
+      if (!currentEditingDay) return;
+
+      let cityEs = document.getElementById('editDayTagEs').value.trim();
+      let cityEn = document.getElementById('editDayTagEn').value.trim();
+      let titleEs = document.getElementById('editDayTitleEs').value.trim();
+      let titleEn = document.getElementById('editDayTitleEn').value.trim();
+      let placesEs = document.getElementById('editDayPlacesEs').value.trim();
+      let placesEn = document.getElementById('editDayPlacesEn').value.trim();
+      let noteEs = document.getElementById('editDayNoteEs').value.trim();
+      let noteEn = document.getElementById('editDayNoteEn').value.trim();
+      const imageUrl = document.getElementById('editDayImage').value;
+
+      if (!cityEn && cityEs) cityEn = await translateTextWithApi(cityEs, 'es', 'en');
+      if (!cityEs && cityEn) cityEs = await translateTextWithApi(cityEn, 'en', 'es');
+      if (!titleEn && titleEs) titleEn = await translateTextWithApi(titleEs, 'es', 'en');
+      if (!titleEs && titleEn) titleEs = await translateTextWithApi(titleEn, 'en', 'es');
+      if (!placesEn && placesEs) placesEn = await translatePlacesList(placesEs, 'es', 'en');
+      if (!placesEs && placesEn) placesEs = await translatePlacesList(placesEn, 'en', 'es');
+      if (!noteEn && noteEs) noteEn = await translateTextWithApi(noteEs, 'es', 'en');
+      if (!noteEs && noteEn) noteEs = await translateTextWithApi(noteEn, 'en', 'es');
+
+      const tagEs = cityEs ? `Día ${currentEditingDay} · ${cityEs}` : `Día ${currentEditingDay}`;
+      const tagEn = cityEn ? `Day ${currentEditingDay} · ${cityEn}` : `Day ${currentEditingDay}`;
+
+      // Ensure the new day is visible even if user leaves some fields empty.
+      if (!titleEs) titleEs = `Día ${currentEditingDay}`;
+      if (!titleEn) titleEn = `Day ${currentEditingDay}`;
+
+      let card = dayCards[currentEditingDay - 1];
+      if (!card) {
+        // Creating a new day card
+        card = document.createElement('article');
+        card.className = 'day-card';
+        card.innerHTML = `<div class="day-image"></div><div class="day-body"><div class="tag"></div><h3></h3><p class="places"></p><p class="note"></p></div>`;
+        getDaysContainer()?.appendChild(card);
+        bindDayCardInteractions(card, currentEditingDay - 1);
+        refreshDayCards();
+      }
+      if (!card) { alert('Error: no se pudo crear el día.'); return; }
+
+      card.querySelector('.tag').dataset.esText = tagEs;
+      card.querySelector('.tag').dataset.enText = tagEn;
+      card.querySelector('h3').dataset.esText = titleEs;
+      card.querySelector('h3').dataset.enText = titleEn;
+      card.querySelector('.places').dataset.esText = placesEs;
+      card.querySelector('.places').dataset.enText = placesEn;
+      card.querySelector('.note').dataset.esText = noteEs;
+      card.querySelector('.note').dataset.enText = noteEn;
+
+      card.querySelector('.tag').textContent = currentLanguage === 'en' ? (tagEn || tagEs) : (tagEs || tagEn);
+      card.querySelector('h3').textContent = currentLanguage === 'en' ? (titleEn || titleEs) : (titleEs || titleEn);
+      card.querySelector('.places').textContent = currentLanguage === 'en' ? (placesEn || placesEs) : (placesEs || placesEn);
+      card.querySelector('.note').textContent = currentLanguage === 'en' ? (noteEn || noteEs) : (noteEs || noteEn);
+      card.querySelector('.day-image').style.backgroundImage = imageUrl ? `url('${imageUrl}')` : '';
+
+      dayEditModal.classList.remove('show');
+      refreshDayCards();
+      dayCards.forEach((card, index) => bindDayCardInteractions(card, index));
+      populateDaysList();
+      saveEditorState();
+      alert('✅ Día guardado correctamente');
+    });
+
+    document.getElementById('deleteDayBtn')?.addEventListener('click', () => {
+      if (!currentEditingDay) return;
+      const lang = currentLanguage;
+      const confirmMsg = lang === 'es'
+        ? `¿Eliminar el Día ${currentEditingDay}? Esta acción no se puede deshacer.`
+        : `Delete Day ${currentEditingDay}? This cannot be undone.`;
+      if (!confirm(confirmMsg)) return;
+      deleteDay(currentEditingDay);
+      dayEditModal.classList.remove('show');
+    });
+
+    window.deleteDay = (dayNum) => {
+      const card = dayCards[dayNum - 1];
+      if (!card) return;
+      card.remove();
+      refreshDayCards();
+      populateDaysList();
+      saveEditorState();
+    };
+
+    document.getElementById('addDayBtn')?.addEventListener('click', () => {
+      const newDayNum = dayCards.length + 1;
+      currentEditingDay = newDayNum;
+
+      const form = document.getElementById('dayEditForm');
+      form.innerHTML = `
+        <div class="form-group" data-edit-lang="es">
+          <label>Ciudad(es) visitada(s) (Español)</label>
+          <input type="text" id="editDayTagEs" placeholder="Londres, París">
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>City/Cities visited (English)</label>
+          <input type="text" id="editDayTagEn" placeholder="London, Paris">
+        </div>
+        <div class="form-group" data-edit-lang="es">
+          <label>Título (Español)</label>
+          <input type="text" id="editDayTitleEs" placeholder="Título del día">
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>Título (English)</label>
+          <input type="text" id="editDayTitleEn" placeholder="Day title">
+        </div>
+        <div class="form-group" data-edit-lang="es">
+          <label>Lugares (Español, separados por coma)</label>
+          <textarea id="editDayPlacesEs" placeholder="Lugar1, Lugar2, Lugar3"></textarea>
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>Places (English, comma separated)</label>
+          <textarea id="editDayPlacesEn" placeholder="Place1, Place2, Place3"></textarea>
+        </div>
+        <div class="form-group" data-edit-lang="es">
+          <label>Nota/Descripción (Español)</label>
+          <textarea id="editDayNoteEs"></textarea>
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>Note/Description (English)</label>
+          <textarea id="editDayNoteEn"></textarea>
+        </div>
+        <div class="form-group">
+          <label>URL de Imagen</label>
+          <input type="text" id="editDayImage" placeholder="https://...">
+        </div>
+      `;
+
+      applyEditorLanguageVisibility(form);
+
+      document.getElementById('dayEditTitle').textContent = `Agregar Nuevo Día`;
+      document.getElementById('deleteDayBtn').style.display = 'none';
+      dayEditModal.classList.add('show');
+      setTimeout(() => {
+        autoFillMissingDayTranslations();
+      }, 0);
+    });
+
+    // DESTINATIONS EDITOR
+    const populateDestinationsList = () => {
+      try {
+        console.log('🔄 populateDestinationsList() called');
+        console.log('dayCards available:', dayCards?.length || 0);
+        console.log('destinationDb type:', typeof destinationDb, 'Is array:', Array.isArray(destinationDb));
+        console.log('destinationDb value:', destinationDb);
+        
+        // Extract unique cities from day tags + custom cities (supports multiple cities per day)
+        const cities = new Set();
+        customCities.forEach(c => cities.add(c));
+        dayCards.forEach(card => {
+          const sourceTag = card.querySelector('.tag')?.dataset?.esText || card.querySelector('.tag')?.textContent || '';
+          console.log('  Tag found:', sourceTag);
+          const parsedCities = getCitiesFromTag(sourceTag);
+          parsedCities.forEach((cityName) => cities.add(resolveCanonicalCity(cityName)));
+        });
+
+        console.log('📍 Cities found:', Array.from(cities));
+        console.log('📦 destinationDb loaded:', !!destinationDb, 'Items:', destinationDb?.length);
+
+        const citiesList = document.getElementById('citiesList');
+        citiesList.style.display = 'flex';
+        document.getElementById('citiesSearchWrap').style.display = 'flex';
+        document.getElementById('destinationsByCity').style.display = 'none';
+        citiesList.innerHTML = '';
+
+        const lang = currentLanguage;
+        // Sort by translated display name, locale-aware
+        const sortedCities = Array.from(cities).sort((a, b) => {
+          const nameA = cityTranslations[resolveCanonicalCity(a)]?.[lang] || resolveCanonicalCity(a);
+          const nameB = cityTranslations[resolveCanonicalCity(b)]?.[lang] || resolveCanonicalCity(b);
+          return nameA.localeCompare(nameB, lang, { sensitivity: 'base' });
+        });
+
+        console.log('🌍 Populating', sortedCities.length, 'cities...');
+
+        if (sortedCities.length === 0) {
+          console.warn('⚠️ No cities found!');
+          citiesList.innerHTML = '<p style="color: #999; padding: 20px;">No cities found in itinerary</p>';
+          return;
+        }
+
+        sortedCities.forEach(city => {
+          const canonicalCity = resolveCanonicalCity(city);
+          const translatedCity = cityTranslations[canonicalCity]?.[lang] || canonicalCity;
+          
+          // Count destinations in this city - use byCity lookup
+          let destCount = 0;
+          if (destinationDb?.byCity) {
+            const cityNorm = normalizeText(canonicalCity);
+            destCount = destinationDb.byCity[cityNorm]?.length || 0;
+            console.log(`  Normalized city: "${city}" -> canonical "${canonicalCity}" -> "${cityNorm}" in byCity:`, !!destinationDb.byCity[cityNorm]);
+          } else if (Array.isArray(destinationDb)) {
+            destCount = destinationDb.length;
+          }
+
+          console.log(`  City: ${city} (${translatedCity}) - ${destCount} destinations`);
+
+          const item = document.createElement('div');
+          item.className = 'editor-item';
+          item.style.cursor = 'pointer';
+          item.dataset.cityName = translatedCity.toLowerCase();
+          item.innerHTML = `
+            <div class="editor-item-title">
+              <strong>${translatedCity}</strong><br>
+              <small style="color: #666;">${destCount} ${lang === 'es' ? 'destinos' : 'destinations'}</small>
+            </div>
+            <div class="editor-item-actions">
+              <button class="editor-item-btn" onclick="editCity('${canonicalCity}')" title="${lang === 'es' ? 'Editar' : 'Edit'}">✏️</button>
+              <button class="editor-item-btn" onclick="viewCityDestinations('${canonicalCity}')">
+                ${lang === 'es' ? 'Ver' : 'View'}
+              </button>
+            </div>
+          `;
+          citiesList.appendChild(item);
+        });
+
+        // Wire up search filter (reset first to avoid duplicate listeners)
+        const searchInput = document.getElementById('citiesSearchInput');
+        searchInput.value = '';
+        searchInput.placeholder = lang === 'es' ? 'Buscar ciudad...' : 'Search city...';
+        searchInput.oninput = () => {
+          const q = searchInput.value.trim().toLowerCase();
+          citiesList.querySelectorAll('.editor-item').forEach(el => {
+            el.style.display = !q || el.dataset.cityName.includes(q) ? '' : 'none';
+          });
+        };
+      } catch (error) {
+        console.error('❌ Error in populateDestinationsList:', error);
+      }
+    };
+
+    window.viewCityDestinations = (city) => {
+      try {
+        console.log('🏙️ Viewing destinations for city:', city);
+        console.log('📦 destinationDb type:', typeof destinationDb, 'Is array:', Array.isArray(destinationDb));
+        console.log('📦 destinationDb keys:', destinationDb ? Object.keys(destinationDb) : 'null');
+        console.log('📦 Has byCity:', !!destinationDb?.byCity);
+        console.log('📦 byCity keys sample:', destinationDb?.byCity ? Object.keys(destinationDb.byCity).slice(0, 10) : 'none');
+        
+        currentEditingCity = city;
+        const lang = currentLanguage;
+        const canonicalCity = resolveCanonicalCity(city);
+        const translatedCity = cityTranslations[canonicalCity]?.[lang] || canonicalCity;
+        
+        // Show the city destinations view
+        document.getElementById('citiesList').style.display = 'none';
+        document.getElementById('citiesSearchWrap').style.display = 'none';
+        document.getElementById('destinationsByCity').style.display = 'block';
+        document.getElementById('cityTitle').textContent = `${lang === 'es' ? 'Destinos en' : 'Destinations in'} ${translatedCity}`;
+
+        // Populate destinations in this city
+        const destList = document.getElementById('destinationsInCityList');
+        destList.innerHTML = '';
+
+        if (!destinationDb) {
+          console.warn('⚠️ destinationDb not available!');
+          destList.innerHTML = '<p style="color: #999; padding: 20px;">Destinations database not loaded yet</p>';
+          return;
+        }
+
+        // Get destinations for this city
+        let cityDestinations = [];
+        
+        // If destinationDb has byCity property (from buildDestinationDatabase), use it
+        if (destinationDb.byCity) {
+          const cityNorm = normalizeText(canonicalCity);
+          console.log(`🔍 Looking for city: "${city}" -> canonical "${canonicalCity}" -> normalized: "${cityNorm}"`);
+          console.log('byCity structure:', Object.keys(destinationDb.byCity).slice(0, 5));
+          cityDestinations = destinationDb.byCity[cityNorm] || [];
+          console.log(`✓ Found ${cityDestinations.length} destinations for city norm "${cityNorm}"`);
+        } else {
+          // Otherwise, filter from records or array
+          const destArray = getDestinationArray();
+          cityDestinations = destArray.filter(dest => {
+            const destCity = (dest.city || dest.place || '').toLowerCase();
+            return destCity.includes(city.toLowerCase());
+          });
+          console.log(`📋 Fallback: filtered ${cityDestinations.length} destinations from array for city "${city}"`);
+          }
+
+        console.log('📝 Total destinations in city:', cityDestinations.length);
+
+        // Sort alphabetically by display name, locale-aware
+        cityDestinations = [...cityDestinations].sort((a, b) => {
+          const nameA = lang === 'es'
+            ? (typeof a.place === 'string' ? a.place : (a.place?.es || ''))
+            : (typeof a.place === 'object' ? (a.place?.en || a.place?.es || '') : (a.place || ''));
+          const nameB = lang === 'es'
+            ? (typeof b.place === 'string' ? b.place : (b.place?.es || ''))
+            : (typeof b.place === 'object' ? (b.place?.en || b.place?.es || '') : (b.place || ''));
+          return nameA.localeCompare(nameB, lang, { sensitivity: 'base' });
+        });
+
+        if (cityDestinations.length === 0) {
+          console.warn('⚠️ No destinations found for this city');
+          console.log('Available byCity keys (first 20):', Object.keys(destinationDb?.byCity || {}).slice(0, 20));
+          destList.innerHTML = '<p style="color: #999; padding: 20px;">No destinations for this city</p>';
+          return;
+        }
+
+        const destArray = getDestinationArray();
+
+        cityDestinations.forEach((dest, index) => {
+          const globalIndex = destArray.indexOf(dest);
+          const placeName = typeof dest.place === 'string' ? dest.place : (dest.place?.es || '');
+          const placeNameEn = typeof dest.place === 'object' ? (dest.place?.en || '') : (dest.place || '');
+          const descEs = typeof dest.description === 'string' ? dest.description : (dest.description?.es || '');
+          const descEn = typeof dest.description === 'object' ? (dest.description?.en || '') : '';
+          
+          console.log(`  [${index}] ${placeName} | place type: ${typeof dest.place} | has en: ${!!placeNameEn}`);
+          
+          const item = document.createElement('div');
+          item.className = 'editor-item';
+          item.dataset.destName = (lang === 'es' ? placeName : placeNameEn || placeName).toLowerCase();
+          item.innerHTML = `
+            <div class="editor-item-title">
+              <strong>${lang === 'es' ? placeName : placeNameEn || placeName}</strong><br>
+              <small style="color: #666;">${lang === 'es' ? (descEs?.substring(0, 60) || '') : (descEn?.substring(0, 60) || '')}...</small>
+            </div>
+            <div class="editor-item-actions">
+              <button class="editor-item-btn" onclick="editDestination(${globalIndex >= 0 ? globalIndex : index})">${lang === 'es' ? 'Editar' : 'Edit'}</button>
+            </div>
+          `;
+          destList.appendChild(item);
+        });
+
+        // Wire up destination search filter
+        const destSearchInput = document.getElementById('destSearchInput');
+        destSearchInput.value = '';
+        destSearchInput.placeholder = lang === 'es' ? 'Buscar destino...' : 'Search destination...';
+        destSearchInput.oninput = () => {
+          const q = destSearchInput.value.trim().toLowerCase();
+          destList.querySelectorAll('.editor-item').forEach(el => {
+            el.style.display = !q || el.dataset.destName.includes(q) ? '' : 'none';
+          });
+        };
+        
+        console.log(`✅ Rendered ${cityDestinations.length} destination items to DOM`);
+      } catch (error) {
+        console.error('❌ Error in viewCityDestinations:', error);
+      }
+    };
+
+    document.getElementById('backToCitiesBtn')?.addEventListener('click', () => {
+      document.getElementById('citiesList').style.display = 'flex';
+      document.getElementById('citiesSearchWrap').style.display = 'flex';
+      document.getElementById('destinationsByCity').style.display = 'none';
+      currentEditingCity = null;
+    });
+
+    window.editCity = (canonical) => {
+      const lang = currentLanguage;
+      const currentEs = cityTranslations[canonical]?.es || canonical;
+      const currentEn = cityTranslations[canonical]?.en || canonical;
+
+      const modalHtml = `
+        <div id="editCityOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center;">
+          <div style="background:#fff;border-radius:12px;padding:28px 24px;width:340px;max-width:95%;box-shadow:0 8px 32px rgba(0,0,0,.2);">
+            <h3 style="margin:0 0 18px;font-size:1.1rem;">${lang === 'es' ? 'Editar Ciudad' : 'Edit City'}</h3>
+            <div class="form-group" data-edit-lang="es" style="margin-bottom:14px;">
+              <label style="display:block;margin-bottom:4px;font-weight:500;">${lang === 'es' ? 'Nombre (Español)' : 'Name (Spanish)'}</label>
+              <input id="editCityEs" type="text" value="${currentEs.replace(/"/g, '&quot;')}" style="width:100%;padding:8px 10px;border:1px solid #ccc;border-radius:6px;font-size:0.95rem;box-sizing:border-box;">
+            </div>
+            <div class="form-group" data-edit-lang="en" style="margin-bottom:20px;">
+              <label style="display:block;margin-bottom:4px;font-weight:500;">${lang === 'es' ? 'Nombre (English)' : 'Name (English)'}</label>
+              <input id="editCityEn" type="text" value="${currentEn.replace(/"/g, '&quot;')}" style="width:100%;padding:8px 10px;border:1px solid #ccc;border-radius:6px;font-size:0.95rem;box-sizing:border-box;">
+            </div>
+            <div style="display:flex;gap:10px;justify-content:flex-end;">
+              <button id="editCityDelete" class="editor-btn editor-btn-danger" style="margin-right:auto;">${lang === 'es' ? 'Eliminar Ciudad' : 'Delete City'}</button>
+              <button id="editCityCancel" class="editor-btn editor-btn-secondary">${lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
+              <button id="editCityConfirm" class="editor-btn editor-btn-primary">${lang === 'es' ? 'Guardar' : 'Save'}</button>
+            </div>
+          </div>
+        </div>`;
+      document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+      const overlay = document.getElementById('editCityOverlay');
+      applyEditorLanguageVisibility(overlay);
+      document.getElementById('editCityEs').focus();
+      document.getElementById('editCityCancel').addEventListener('click', () => overlay.remove());
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+
+      document.getElementById('editCityDelete').addEventListener('click', () => {
+        if (!ensureAdminAccess('eliminar ciudades', 'delete cities')) return;
+        const confirmMsg = lang === 'es'
+          ? `¿Eliminar ciudad "${currentEs}" y todos sus destinos?`
+          : `Delete city "${currentEn}" and all its destinations?`;
+        if (!confirm(confirmMsg)) return;
+
+        const normalizedTargets = new Set([
+          normalizeText(canonical),
+          normalizeText(currentEs),
+          normalizeText(currentEn)
+        ]);
+
+        const remaining = getDestinationArray().filter((record) => {
+          const cityNorm = normalizeText(record?.city || '');
+          return !normalizedTargets.has(cityNorm);
+        });
+
+        destinationDb = buildDatabaseFromJson({ records: remaining });
+        delete cityTranslations[canonical];
+        delete cityTranslations[currentEs];
+        customCities = customCities.filter((c) => !normalizedTargets.has(normalizeText(c)));
+
+        overlay.remove();
+        currentEditingCity = null;
+        saveEditorState();
+        populateDestinationsList();
+        syncDestinationsToServer();
+
+        alert(lang === 'es' ? '✅ Ciudad eliminada' : '✅ City deleted');
+      });
+
+      document.getElementById('editCityConfirm').addEventListener('click', () => {
+        const newEs = document.getElementById('editCityEs').value.trim();
+        const newEn = document.getElementById('editCityEn').value.trim() || newEs;
+        if (!newEs) return;
+
+        const oldEs = cityTranslations[canonical]?.es || canonical;
+        const oldEn = cityTranslations[canonical]?.en || canonical;
+
+        // Update translation entry
+        if (cityTranslations[canonical]) {
+          cityTranslations[canonical].es = newEs;
+          cityTranslations[canonical].en = newEn;
+        } else {
+          cityTranslations[canonical] = { es: newEs, en: newEn };
+        }
+
+        // If the canonical key itself was the old ES name (custom city), rename the key too
+        if (canonical === oldEs && newEs !== oldEs) {
+          cityTranslations[newEs] = cityTranslations[canonical];
+          delete cityTranslations[canonical];
+
+          // Update customCities list
+          const idx = customCities.indexOf(canonical);
+          if (idx >= 0) customCities[idx] = newEs;
+
+          // Move byCity entry to new normalized key
+          if (destinationDb?.byCity) {
+            const oldNorm = normalizeText(canonical);
+            const newNorm = normalizeText(newEs);
+            const records = destinationDb.byCity[oldNorm] || [];
+            records.forEach(r => { r.city = newEs; r.cityNorm = newNorm; });
+            destinationDb.byCity[newNorm] = records;
+            delete destinationDb.byCity[oldNorm];
+            destinationDb.cityNameByNorm[newNorm] = newEs;
+            delete destinationDb.cityNameByNorm[oldNorm];
+          }
+
+          // Update day card tags that reference old city name
+          dayCards.forEach(card => {
+            const tagEl = card.querySelector('.tag');
+            if (!tagEl) return;
+            const esText = tagEl.dataset.esText || tagEl.textContent;
+            if (esText.includes(oldEs)) {
+              const updatedEs = esText.replace(oldEs, newEs);
+              tagEl.dataset.esText = updatedEs;
+              const enText = tagEl.dataset.enText || esText;
+              const updatedEn = enText.replace(oldEn, newEn);
+              tagEl.dataset.enText = updatedEn;
+              tagEl.textContent = lang === 'es' ? updatedEs : updatedEn;
+            }
+          });
+        } else {
+          // Just update day card EN references for built-in cities
+          dayCards.forEach(card => {
+            const tagEl = card.querySelector('.tag');
+            if (!tagEl) return;
+            const enText = tagEl.dataset.enText || '';
+            if (enText.includes(oldEn)) {
+              tagEl.dataset.enText = enText.replace(oldEn, newEn);
+            }
+          });
+        }
+
+        overlay.remove();
+        saveEditorState();
+        populateDestinationsList();
+        syncDestinationsToServer();
+      });
+    };
+
+    document.getElementById('addCityBtn')?.addEventListener('click', () => {
+      const lang = currentLanguage;
+      const esLabel = lang === 'es' ? 'Nombre de la ciudad (Español)' : 'City name (Spanish)';
+      const enLabel = lang === 'es' ? 'Nombre de la ciudad (English)' : 'City name (English)';
+      const modalHtml = `
+        <div id="addCityOverlay" style="position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:9999;display:flex;align-items:center;justify-content:center;">
+          <div style="background:#fff;border-radius:12px;padding:28px 24px;width:340px;max-width:95%;box-shadow:0 8px 32px rgba(0,0,0,.2);">
+            <h3 style="margin:0 0 18px;font-size:1.1rem;">${lang === 'es' ? 'Agregar Ciudad' : 'Add City'}</h3>
+            <div class="form-group" data-edit-lang="es" style="margin-bottom:14px;">
+              <label style="display:block;margin-bottom:4px;font-weight:500;">${esLabel}</label>
+              <input id="newCityEs" type="text" style="width:100%;padding:8px 10px;border:1px solid #ccc;border-radius:6px;font-size:0.95rem;box-sizing:border-box;" placeholder="ej. Nápoles">
+            </div>
+            <div class="form-group" data-edit-lang="en" style="margin-bottom:20px;">
+              <label style="display:block;margin-bottom:4px;font-weight:500;">${enLabel}</label>
+              <input id="newCityEn" type="text" style="width:100%;padding:8px 10px;border:1px solid #ccc;border-radius:6px;font-size:0.95rem;box-sizing:border-box;" placeholder="e.g. Naples">
+            </div>
+            <div style="display:flex;gap:10px;justify-content:flex-end;">
+              <button id="addCityCancel" class="editor-btn editor-btn-secondary">${lang === 'es' ? 'Cancelar' : 'Cancel'}</button>
+              <button id="addCityConfirm" class="editor-btn editor-btn-primary">${lang === 'es' ? 'Agregar' : 'Add'}</button>
+            </div>
+          </div>
+        </div>`;
+      document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+      const overlay = document.getElementById('addCityOverlay');
+      applyEditorLanguageVisibility(overlay);
+      document.getElementById('newCityEs').focus();
+
+      document.getElementById('addCityCancel').addEventListener('click', () => overlay.remove());
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+
+      document.getElementById('addCityConfirm').addEventListener('click', () => {
+        const nameEs = document.getElementById('newCityEs').value.trim();
+        const nameEn = document.getElementById('newCityEn').value.trim() || nameEs;
+        if (!nameEs) return;
+
+        const canonical = nameEs;
+        if (!cityTranslations[canonical]) {
+          cityTranslations[canonical] = { es: nameEs, en: nameEn };
+        }
+        if (!customCities.includes(canonical)) customCities.push(canonical);
+        if (destinationDb) {
+          const norm = normalizeText(canonical);
+          if (!destinationDb.byCity[norm]) destinationDb.byCity[norm] = [];
+          if (!destinationDb.cityNameByNorm[norm]) destinationDb.cityNameByNorm[norm] = canonical;
+        }
+
+        overlay.remove();
+        saveEditorState();
+        populateDestinationsList();
+        syncDestinationsToServer();
+      });
+    });
+
+    window.editDestination = (index) => {
+      currentEditingDestination = index;
+      const destArray = getDestinationArray();
+      const dest = destArray[index];
+      if (!dest) return;
+      const lang = currentLanguage;
+
+      const placeName = typeof dest.place === 'string' ? dest.place : (dest.place?.es || '');
+      const placeNameEn = dest.place?.en || '';
+      const descEs = typeof dest.description === 'string' ? dest.description : (dest.description?.es || '');
+      const descEn = dest.description?.en || '';
+      const image = dest.image || '';
+
+      const form = document.getElementById('destinationEditForm');
+      form.innerHTML = `
+        <div class="form-group" data-edit-lang="es">
+          <label>${lang === 'es' ? 'Lugar (Español)' : 'Place (Spanish)'}</label>
+          <input type="text" id="editDestPlace" value="${placeName}" placeholder="${lang === 'es' ? 'Nombre del lugar' : 'Place name'}">
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>${lang === 'es' ? 'Lugar (English)' : 'Place (English)'}</label>
+          <input type="text" id="editDestPlaceEn" value="${placeNameEn}" placeholder="Place name in English">
+        </div>
+        <div class="form-group" data-edit-lang="es">
+          <label>${lang === 'es' ? 'Descripción (Español)' : 'Description (Spanish)'}</label>
+          <textarea id="editDestDesc">${descEs}</textarea>
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>${lang === 'es' ? 'Descripción (English)' : 'Description (English)'}</label>
+          <textarea id="editDestDescEn">${descEn}</textarea>
+        </div>
+        <div class="form-group">
+          <label>${lang === 'es' ? 'URL de Imagen' : 'Image URL'}</label>
+          <input type="text" id="editDestImage" value="${image}" placeholder="https://...">
+        </div>
+      `;
+
+      applyEditorLanguageVisibility(form);
+
+      const editCanonicalCity = resolveCanonicalCity(dest.city || currentEditingCity || '');
+      const editCityLabel = cityTranslations[editCanonicalCity]?.[lang] || editCanonicalCity;
+      const editBaseTitle = lang === 'es' ? 'Editar Destino' : 'Edit Destination';
+      const editInWord = lang === 'es' ? 'en' : 'in';
+      document.getElementById('destinationEditTitle').textContent = editCityLabel ? `${editBaseTitle} ${editInWord} ${editCityLabel}` : editBaseTitle;
+      document.getElementById('deleteDestinationBtn').style.display = 'block';
+      destinationEditModal.classList.add('show');
+    };
+
+    document.getElementById('saveDestinationBtn')?.addEventListener('click', async () => {
+      let placeEs = document.getElementById('editDestPlace').value.trim();
+      let placeEn = document.getElementById('editDestPlaceEn').value.trim();
+      let descEs = document.getElementById('editDestDesc').value.trim();
+      let descEn = document.getElementById('editDestDescEn').value.trim();
+      const image = document.getElementById('editDestImage').value.trim();
+
+      if (!placeEn && placeEs) placeEn = await translateTextWithApi(placeEs, 'es', 'en');
+      if (!placeEs && placeEn) placeEs = await translateTextWithApi(placeEn, 'en', 'es');
+      if (!descEn && descEs) descEn = await translateTextWithApi(descEs, 'es', 'en');
+      if (!descEs && descEn) descEs = await translateTextWithApi(descEn, 'en', 'es');
+
+      if (!placeEs) {
+        alert(currentLanguage === 'es' ? '⚠️ El nombre del lugar en Español es obligatorio.' : '⚠️ Spanish place name is required.');
+        return;
+      }
+
+      const canonicalCity = resolveCanonicalCity(currentEditingCity || '');
+      const cityValue = canonicalCity || currentEditingCity || '';
+      const fallbackPlaceEn = placeEn || placeEs;
+
+      const newRecord = {
+        city: cityValue,
+        place: { es: placeEs, en: fallbackPlaceEn },
+        description: { es: descEs, en: descEn },
+        image: image,
+        placeNorm: normalizeText(placeEs),
+        placeNorms: [normalizeText(placeEs), normalizeText(fallbackPlaceEn)].filter((v, i, arr) => v && arr.indexOf(v) === i),
+        placeCompact: normalizeText(placeEs).replace(/\s+/g, ''),
+        placeCompacts: [normalizeText(placeEs).replace(/\s+/g, ''), normalizeText(fallbackPlaceEn).replace(/\s+/g, '')].filter((v, i, arr) => v && arr.indexOf(v) === i)
+      };
+
+      const destArray = getDestinationArray();
+      if (currentEditingDestination === null) {
+        destArray.push(newRecord);
+      } else {
+        const existingCity = destArray[currentEditingDestination]?.city || cityValue;
+        destArray[currentEditingDestination] = {
+          ...newRecord,
+          city: existingCity
+        };
+      }
+
+      destinationDb = buildDatabaseFromJson({ records: destArray });
+      destinationEditModal.classList.remove('show');
+      saveEditorState();
+
+      if (currentEditingCity) {
+        viewCityDestinations(currentEditingCity);
+      } else {
+        populateDestinationsList();
+      }
+
+      await syncDestinationsToServer();
+
+      alert(currentEditingDestination === null
+        ? (currentLanguage === 'es' ? '✅ Destino agregado correctamente' : '✅ Destination added successfully')
+        : (currentLanguage === 'es' ? '✅ Destino actualizado correctamente' : '✅ Destination updated successfully'));
+    });
+
+    document.getElementById('deleteDestinationBtn')?.addEventListener('click', () => {
+      if (currentEditingDestination === null) return;
+      if (!ensureAdminAccess('eliminar destinos', 'delete destinations')) return;
+      if (confirm('¿Estás seguro de que quieres eliminar este destino?')) {
+        const updated = getDestinationArray().filter((_, idx) => idx !== currentEditingDestination);
+        destinationDb = buildDatabaseFromJson({ records: updated });
+        destinationEditModal.classList.remove('show');
+        populateDestinationsList();
+        saveEditorState();
+        syncDestinationsToServer();
+        alert('✅ Destino eliminado');
+      }
+    });
+
+    document.getElementById('addDestinationBtn')?.addEventListener('click', () => {
+      currentEditingDestination = null;
+      const lang = currentLanguage;
+      const canonicalCity = resolveCanonicalCity(currentEditingCity || '');
+      const cityLabel = cityTranslations[canonicalCity]?.[lang] || canonicalCity;
+      const form = document.getElementById('destinationEditForm');
+      form.innerHTML = `
+        <div class="form-group" data-edit-lang="es">
+          <label>${lang === 'es' ? 'Lugar (Español)' : 'Place (Spanish)'}</label>
+          <input type="text" id="editDestPlace" placeholder="${lang === 'es' ? 'Nombre del lugar' : 'Place name'}">
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>${lang === 'es' ? 'Lugar (English)' : 'Place (English)'}</label>
+          <input type="text" id="editDestPlaceEn" placeholder="Place name in English">
+        </div>
+        <div class="form-group" data-edit-lang="es">
+          <label>${lang === 'es' ? 'Descripción (Español)' : 'Description (Spanish)'}</label>
+          <textarea id="editDestDesc"></textarea>
+        </div>
+        <div class="form-group" data-edit-lang="en">
+          <label>${lang === 'es' ? 'Descripción (English)' : 'Description (English)'}</label>
+          <textarea id="editDestDescEn"></textarea>
+        </div>
+        <div class="form-group">
+          <label>${lang === 'es' ? 'URL de Imagen' : 'Image URL'}</label>
+          <input type="text" id="editDestImage" placeholder="https://...">
+        </div>
+      `;
+
+      applyEditorLanguageVisibility(form);
+
+      const baseTitle = lang === 'es' ? 'Agregar Nuevo Destino' : 'Add New Destination';
+      const inWord = lang === 'es' ? 'en' : 'in';
+      document.getElementById('destinationEditTitle').textContent = cityLabel ? `${baseTitle} ${inWord} ${cityLabel}` : baseTitle;
+      document.getElementById('deleteDestinationBtn').style.display = 'none';
+      destinationEditModal.classList.add('show');
+    });
+
+    // IMPORT/EXPORT
+    document.getElementById('exportDaysBtn')?.addEventListener('click', () => {
+      const daysData = dayCards.map((card, i) => ({
+        day: i + 1,
+        tag: card.querySelector('.tag')?.dataset?.esText || card.querySelector('.tag')?.textContent || '',
+        tagEn: card.querySelector('.tag')?.dataset?.enText || '',
+        title: card.querySelector('h3')?.dataset?.esText || card.querySelector('h3')?.textContent || '',
+        titleEn: card.querySelector('h3')?.dataset?.enText || '',
+        places: card.querySelector('.places')?.dataset?.esText || card.querySelector('.places')?.textContent || '',
+        placesEn: card.querySelector('.places')?.dataset?.enText || '',
+        note: card.querySelector('.note')?.dataset?.esText || card.querySelector('.note')?.textContent || '',
+        noteEn: card.querySelector('.note')?.dataset?.enText || '',
+        image: card.querySelector('.day-image')?.style.backgroundImage?.match(/url\(['"]?(.*?)['"]?\)/)?.[1] || ''
+      }));
+
+      const blob = new Blob([JSON.stringify(daysData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'dias-itinerario.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    const buildDestinationsPayload = () => {
+      const destArray = Array.isArray(destinationDb) ? destinationDb : (destinationDb?.records || []);
+
+      const records = destArray.map((record) => {
+        const city = String(record?.city || '').trim();
+        const placeEs = typeof record?.place === 'string' ? record.place : (record?.place?.es || '');
+        const placeEn = typeof record?.place === 'string' ? record.place : (record?.place?.en || placeEs);
+        const descEs = typeof record?.description === 'string' ? record.description : (record?.description?.es || '');
+        const descEn = typeof record?.description === 'string' ? record.description : (record?.description?.en || descEs);
+
+        return {
+          city,
+          place: { es: placeEs, en: placeEn },
+          image: String(record?.image || ''),
+          description: { es: descEs, en: descEn }
+        };
+      }).filter((r) => r.city && r.place.es);
+
+      const cities = Array.from(new Set(records.map((r) => r.city))).sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }));
+
+      const payload = {
+        schemaVersion: 2,
+        generatedAt: new Date().toISOString(),
+        sourceFile: 'Prueba Itinerario 18 dias - destinos con imagenes.html',
+        languages: ['es', 'en'],
+        defaultLanguage: 'es',
+        cities,
+        records
+      };
+
+      return payload;
+    };
+
+    const syncDestinationsToServer = async (showAlert = false) => {
+      try {
+        if (window.location.protocol === 'file:') {
+          if (showAlert) {
+            alert(currentLanguage === 'es'
+              ? '❌ Debes abrir la página desde el servidor local para guardar en la base de datos.'
+              : '❌ Open this page from the local server to save into the database.');
+          }
+          return false;
+        }
+
+        const payload = buildDestinationsPayload();
+        const response = await fetch('/api/save-destinations', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          const txt = await response.text();
+          throw new Error(txt || `HTTP ${response.status}`);
+        }
+
+        if (showAlert) {
+          const data = await response.json();
+          alert(currentLanguage === 'es'
+            ? `✅ Destinos guardados en servidor (${data?.records || payload.records.length} registros)`
+            : `✅ Destinations saved to server (${data?.records || payload.records.length} records)`);
+        }
+        return true;
+      } catch (error) {
+        console.warn('Could not auto-sync destinations to server:', error);
+        if (showAlert) {
+          alert(currentLanguage === 'es'
+            ? '❌ No se pudo guardar en servidor. Inicia el servidor local Node y vuelve a intentar.'
+            : '❌ Could not save to server. Start the local Node server and try again.');
+        }
+        return false;
+      }
+    };
+
+    document.getElementById('exportDestinationsBtn')?.addEventListener('click', () => {
+      const payload = buildDestinationsPayload();
+
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'destinations.database.json';
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+
+    document.getElementById('saveDestinationsServerBtn')?.addEventListener('click', async () => {
+      await syncDestinationsToServer(true);
+    });
+
+    document.getElementById('importDaysBtn')?.addEventListener('click', () => {
+      const file = document.getElementById('importDaysInput').files[0];
+      if (!file) return alert('Por favor selecciona un archivo');
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const daysData = JSON.parse(e.target.result);
+          if (!Array.isArray(daysData)) throw new Error('Formato inválido');
+
+          daysData.forEach((dayData, i) => {
+            if (i < dayCards.length) {
+              const card = dayCards[i];
+              if (dayData.tag) {
+                card.querySelector('.tag').textContent = dayData.tag;
+                card.querySelector('.tag').dataset.esText = dayData.tag;
+                if (dayData.tagEn) card.querySelector('.tag').dataset.enText = dayData.tagEn;
+              }
+              if (dayData.title) {
+                card.querySelector('h3').textContent = dayData.title;
+                card.querySelector('h3').dataset.esText = dayData.title;
+                if (dayData.titleEn) card.querySelector('h3').dataset.enText = dayData.titleEn;
+              }
+              if (dayData.places) {
+                card.querySelector('.places').textContent = dayData.places;
+                card.querySelector('.places').dataset.esText = dayData.places;
+                if (dayData.placesEn) card.querySelector('.places').dataset.enText = dayData.placesEn;
+              }
+              if (dayData.note) {
+                card.querySelector('.note').textContent = dayData.note;
+                card.querySelector('.note').dataset.esText = dayData.note;
+                if (dayData.noteEn) card.querySelector('.note').dataset.enText = dayData.noteEn;
+              }
+              if (dayData.image) card.querySelector('.day-image').style.backgroundImage = `url('${dayData.image}')`;
+            }
+          });
+
+          populateDaysList();
+          saveEditorState();
+          alert('✅ Días importados correctamente');
+          document.getElementById('importDaysInput').value = '';
+        } catch (error) {
+          alert('❌ Error al importar: ' + error.message);
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    document.getElementById('importDestinationsBtn')?.addEventListener('click', () => {
+      const file = document.getElementById('importDestinationsInput').files[0];
+      if (!file) return alert('Por favor selecciona un archivo');
+
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          let newDestinations = [];
+          
+          // Handle both array and object formats
+          if (Array.isArray(imported)) {
+            newDestinations = imported;
+          } else if (imported?.records && Array.isArray(imported.records)) {
+            newDestinations = imported.records;
+          } else if (typeof imported === 'object') {
+            newDestinations = Object.values(imported);
+          }
+
+          destinationDb = buildDatabaseFromJson({ records: newDestinations });
+
+          populateDestinationsList();
+          saveEditorState();
+          alert('✅ Destinos importados correctamente');
+          document.getElementById('importDestinationsInput').value = '';
+        } catch (error) {
+          alert('❌ Error al importar: ' + error.message);
+        }
+      };
+      reader.readAsText(file);
+    });
+  </script>
+</body>
+</html>

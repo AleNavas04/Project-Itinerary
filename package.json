@@ -1,0 +1,10 @@
+{
+  "name": "capri-itinerary-local-server",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local server for itinerary editor with destinations save API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
